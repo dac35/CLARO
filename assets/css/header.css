@@ -11,6 +11,11 @@ header {
   box-shadow: var(--sombra-suave);
 }
 
+.logoclaro {
+  height: 40px;
+  width: auto;
+}
+
 .header-content {
   display: flex;
   justify-content: space-between;
