@@ -1,0 +1,65 @@
+/* Estilos específicos para la página de Contacto */
+
+/* Tarjetas de contacto con iconos */
+.contacto .miembro h3 {
+  font-size: 1.3rem;
+  margin-bottom: var(--espacio-md);
+  color: var(--rosa-vibrante);
+}
+
+.contacto .miembro p strong {
+  color: var(--negro-suave);
+  font-family: var(--fuente-display);
+  font-weight: 600;
+  font-size: 1.1em;
+  display: block;
+  margin-bottom: var(--espacio-xs);
+}
+
+/* Información de contacto específica */
+.contacto .miembro p br {
+  margin-bottom: var(--espacio-xs);
+}
+
+/* Efectos hover específicos para contacto */
+.contacto .miembro:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--sombra-media);
+}
+
+.contacto .miembro::before {
+  background: linear-gradient(
+    90deg,
+    var(--rosa-vibrante),
+    var(--violeta-profundo)
+  );
+  height: 5px;
+}
+
+/* Estilos para links de email y redes */
+.contacto .miembro a {
+  color: var(--rosa-vibrante);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contacto .miembro a:hover {
+  color: var(--violeta-profundo);
+  text-decoration: underline;
+}
+
+/* Responsive específico para contacto */
+@media (max-width: 768px) {
+  .contacto .miembro {
+    padding: var(--espacio-lg);
+  }
+
+  .contacto .miembro h3 {
+    font-size: 1.1rem;
+  }
+
+  .contacto .miembro p strong {
+    font-size: 1rem;
+  }
+}

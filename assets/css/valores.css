@@ -1,0 +1,47 @@
+/* Estilos específicos para la página "Nuestros Valores" */
+
+/* Tarjetas de valores con énfasis especial */
+.valores .miembro h3 {
+  font-size: 1.4rem;
+  margin-bottom: var(--espacio-md);
+}
+
+.valores .miembro p strong {
+  color: var(--rosa-vibrante);
+  font-weight: 700;
+  font-size: 1.05em;
+}
+
+.valores .miembro p em {
+  display: block;
+  margin-top: var(--espacio-sm);
+  padding: var(--espacio-sm);
+  background: var(--rosa-suave);
+  color: var(--negro-suave);
+  border-radius: var(--radio-sm);
+  font-style: italic;
+  font-weight: 500;
+  border-left: 4px solid var(--rosa-vibrante);
+}
+
+/* Efectos especiales para valores */
+.valores .miembro:hover {
+  transform: translateY(-12px);
+  box-shadow: var(--sombra-fuerte);
+}
+
+.valores .miembro::before {
+  height: 6px;
+}
+
+/* Responsive específico para valores */
+@media (max-width: 768px) {
+  .valores .miembro h3 {
+    font-size: 1.2rem;
+  }
+
+  .valores .miembro p em {
+    padding: var(--espacio-xs);
+    font-size: 0.9rem;
+  }
+}

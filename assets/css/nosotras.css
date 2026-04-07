@@ -1,0 +1,24 @@
+/* Estilos específicos para la página "Sobre Nosotras" */
+
+/* Tarjetas de miembros con información extendida */
+.miembro p strong {
+  color: var(--negro-suave);
+  font-weight: 600;
+}
+
+.miembro p em {
+  color: var(--rosa-vibrante);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Responsive específico */
+@media (max-width: 768px) {
+  .miembro {
+    padding: var(--espacio-lg);
+  }
+
+  .miembro h3 {
+    font-size: 1.2rem;
+  }
+}

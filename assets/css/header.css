@@ -1,0 +1,88 @@
+/* Estilos para Header y Navegación */
+
+/* Header */
+header {
+  background: var(--gradiente-principal);
+  padding: var(--espacio-md) 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
+  box-shadow: var(--sombra-suave);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-family: var(--fuente-display);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--blanco-puro);
+  text-decoration: none;
+  letter-spacing: -0.02em;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Navegación */
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: var(--espacio-lg);
+  align-items: center;
+}
+
+nav a {
+  color: var(--blanco-puro);
+  text-decoration: none;
+  font-weight: 500;
+  padding: var(--espacio-xs) var(--espacio-sm);
+  border-radius: var(--radio-sm);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+nav a.active {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive para Header */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column;
+    gap: var(--espacio-md);
+  }
+
+  nav ul {
+    gap: var(--espacio-md);
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  nav ul {
+    flex-wrap: wrap;
+    gap: var(--espacio-sm);
+    justify-content: center;
+  }
+
+  nav a {
+    font-size: 0.9rem;
+    padding: var(--espacio-xs);
+  }
+}

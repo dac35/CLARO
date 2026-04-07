@@ -1,0 +1,294 @@
+/* Variables CSS y estilos base compartidos */
+/* Código Rosa - Estilos principales */
+
+/* Importación de fuente de Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap");
+
+/* Variables CSS*/
+:root {
+  /* Paleta de colores */
+  --rosa-vibrante: #ff6b9d;
+  --rosa-suave: #ffd3e1;
+  --rosa-oscuro: #e91e63;
+  --violeta-profundo: #6c5ce7;
+  --azul-tech: #2d3748;
+  --gris-moderno: #4a5568;
+  --gris-claro: #f7fafc;
+  --blanco-puro: #ffffff;
+  --negro-suave: #1a202c;
+
+  /* Gradientes */
+  --gradiente-principal: linear-gradient(135deg, #ff6b9d 0%, #6c5ce7 100%);
+  --gradiente-suave: linear-gradient(135deg, #ffd3e1 0%, #f7fafc 100%);
+
+  /* Tipografías */
+  --fuente-principal: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --fuente-display: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
+    sans-serif;
+
+  /* Espaciado */
+  --espacio-xs: 0.5rem;
+  --espacio-sm: 1rem;
+  --espacio-md: 1.5rem;
+  --espacio-lg: 2rem;
+  --espacio-xl: 3rem;
+  --espacio-2xl: 4rem;
+
+  /* Sombras */
+  --sombra-suave: 0 4px 6px rgba(0, 0, 0, 0.05);
+  --sombra-media: 0 10px 25px rgba(0, 0, 0, 0.1);
+  --sombra-fuerte: 0 20px 40px rgba(0, 0, 0, 0.15);
+
+  /* Bordes */
+  --radio-sm: 8px;
+  --radio-md: 12px;
+  --radio-lg: 16px;
+  --radio-xl: 24px;
+}
+
+/* Reset y base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--fuente-principal);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--azul-tech);
+  background-color: var(--blanco-puro);
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--espacio-md);
+}
+
+/* Secciones principales */
+section {
+  padding: var(--espacio-2xl) 0;
+}
+
+/* Hero section básico (compartido) */
+.hero {
+  background: var(--gradiente-suave);
+  text-align: center;
+  padding: var(--espacio-2xl) 0 var(--espacio-xl);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 800;
+  margin-bottom: var(--espacio-md);
+  letter-spacing: -0.02em;
+}
+
+.hero .subtitle {
+  font-size: 1.2rem;
+  color: var(--gris-moderno);
+  margin-bottom: var(--espacio-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Fondos de secciones compartidas */
+.identidad {
+  background-color: var(--blanco-puro);
+}
+
+.nosotras {
+  background: var(--gris-claro);
+}
+
+.valores {
+  background: var(--blanco-puro);
+}
+
+.contacto {
+  background: var(--gris-claro);
+}
+
+/* Títulos compartidos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fuente-display);
+  color: var(--negro-suave);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: var(--espacio-xl);
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--gradiente-principal);
+  border-radius: 2px;
+}
+
+/* Grid de equipo compartido */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--espacio-lg);
+  margin-top: var(--espacio-xl);
+}
+
+.miembro {
+  background: var(--blanco-puro);
+  padding: var(--espacio-xl);
+  border-radius: var(--radio-lg);
+  box-shadow: var(--sombra-suave);
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.miembro::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradiente-principal);
+}
+
+.miembro:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--sombra-media);
+}
+
+.miembro h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: var(--espacio-sm);
+}
+
+.miembro h4 {
+  font-family: var(--fuente-principal);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--rosa-vibrante);
+  margin-bottom: var(--espacio-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.miembro p {
+  color: var(--gris-moderno);
+  line-height: 1.6;
+  margin-bottom: var(--espacio-sm);
+}
+
+.miembro p:last-child {
+  margin-bottom: 0;
+}
+
+/* Animaciones sutiles */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fade-in-up 0.6s ease-out;
+}
+
+/* Utilidades */
+.text-center {
+  text-align: center;
+}
+
+.mb-lg {
+  margin-bottom: var(--espacio-lg);
+}
+
+.mt-lg {
+  margin-top: var(--espacio-lg);
+}
+
+/* Responsive Design Base */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: var(--espacio-md);
+  }
+
+  section {
+    padding: var(--espacio-xl) 0;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--espacio-sm);
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero {
+    padding: var(--espacio-xl) 0;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+  }
+}
