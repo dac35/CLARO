@@ -8,7 +8,7 @@
 /* Estilos Globales */
 :root {
   --color-claro: #da291c; /* Color rojo de Claro */
-  --color-texto: #333;
+  --color-texto: #fffffff5;
   --color-subtitulo: #666;
   --fuente-principal:
     "Claro", sans-serif; /* Nombre hipotético, reemplaza por la real */
@@ -19,9 +19,7 @@ body {
   margin: 0;
   color: var(--color-texto);
 }
-section {
-  padding: 0;
-}
+
 h1 {
   font-size: 3rem;
   margin-top: 0;
@@ -40,27 +38,39 @@ h1 .resaltado {
 }
 
 /* Sección Hero */
-.hero {
+/*.hero {
+  position: relative;
   padding: 0 0;
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+}*/
+.hero {
+  background-image: url("../images/portada.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
 }
 .hero-text {
   position: absolute;
 }
 
 .hero-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  position: relative;
+  z-index: 2;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
-
-.hero-img img {
-  max-width: 100%;
-  height: auto;
-}
-/* Botones */
+.hero-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: var(--color-texto);
+} /* Botones */
 .btn {
   background-color: var(--color-claro);
   color: #fff;
