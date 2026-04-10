@@ -2,7 +2,6 @@
 
 /* Header */
 header {
-  background: var(--gradiente-principal);
   padding: var(--espacio-md) 0;
   position: sticky;
   top: 0;
@@ -45,7 +44,7 @@ nav ul {
 }
 
 nav a {
-  color: var(--blanco-puro);
+  color: #333;
   text-decoration: none;
   font-weight: 500;
   padding: var(--espacio-xs) var(--espacio-sm);
@@ -55,12 +54,14 @@ nav a {
 }
 
 nav a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: #e53935;
+  color: white;
   transform: translateY(-2px);
 }
 
 nav a.active {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #db2e2e;
+  color: white;
 }
 
 /* Responsive para Header */
