@@ -44,24 +44,29 @@ nav ul {
 }
 
 nav a {
-  color: #333;
-  text-decoration: none;
-  font-weight: 500;
-  padding: var(--espacio-xs) var(--espacio-sm);
-  border-radius: var(--radio-sm);
-  transition: all 0.3s ease;
+  font-size: 1.2rem;
   position: relative;
+  text-decoration: none;
+  color: black;
 }
 
-nav a:hover {
-  background-color: #e53935;
-  color: white;
-  transform: translateY(-2px);
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0%;
+  height: 2px;
+  background: red;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
 }
 
 nav a.active {
-  background-color: #db2e2e;
-  color: white;
+  color: rgb(214, 13, 13);
 }
 
 /* Responsive para Header */
