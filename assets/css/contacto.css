@@ -1,65 +1,215 @@
-/* Estilos específicos para la página de Contacto */
-
-/* Tarjetas de contacto con iconos */
-.contacto .miembro h3 {
-  font-size: 1.3rem;
-  margin-bottom: var(--espacio-md);
-  color: var(--rosa-vibrante);
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Montserrat", sans-serif;
 }
 
-.contacto .miembro p strong {
-  color: var(--negro-suave);
-  font-family: var(--fuente-display);
-  font-weight: 600;
-  font-size: 1.1em;
-  display: block;
-  margin-bottom: var(--espacio-xs);
+/* MAIN (NO body) */
+main {
+  min-height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to right, #e2e2e2, #f3afaf);
 }
 
-/* Información de contacto específica */
-.contacto .miembro p br {
-  margin-bottom: var(--espacio-xs);
+/* Contenedor del login */
+.login-container {
+  background: #fff;
+  border-radius: 30px;
+  box-shadow: 0 5px 15px rgba(161, 5, 5, 0.35);
+  position: relative;
+  overflow: hidden;
+  width: 768px;
+  max-width: 100%;
+  min-height: 480px;
 }
 
-/* Efectos hover específicos para contacto */
-.contacto .miembro:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: var(--sombra-media);
+/* Texto */
+.login-container p {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 20px 0;
 }
 
-.contacto .miembro::before {
-  background: linear-gradient(
-    90deg,
-    var(--rosa-vibrante),
-    var(--violeta-profundo)
-  );
-  height: 5px;
+.login-container span {
+  font-size: 12px;
 }
 
-/* Estilos para links de email y redes */
-.contacto .miembro a {
-  color: var(--rosa-vibrante);
+.login-container a {
+  color: #333;
+  font-size: 13px;
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s ease;
+  margin: 15px 0 10px;
 }
 
-.contacto .miembro a:hover {
-  color: var(--violeta-profundo);
-  text-decoration: underline;
+/* Botones */
+.login-container button {
+  background: #ee3242;
+  color: #fff;
+  font-size: 12px;
+  padding: 10px 45px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 10px;
+  cursor: pointer;
 }
 
-/* Responsive específico para contacto */
-@media (max-width: 768px) {
-  .contacto .miembro {
-    padding: var(--espacio-lg);
-  }
+.login-container button.hidden {
+  background: transparent;
+  border: 1px solid #fff;
+}
 
-  .contacto .miembro h3 {
-    font-size: 1.1rem;
-  }
+/* Formularios */
+.login-container form {
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 40px;
+  height: 100%;
+}
 
-  .contacto .miembro p strong {
-    font-size: 1rem;
+/* Inputs */
+.login-container input {
+  background: #eee;
+  border: none;
+  margin: 8px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+  width: 100%;
+  outline: none;
+}
+
+/* Formularios superpuestos */
+.form-container {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  transition: 0.6s ease-in-out;
+}
+
+/* Login */
+.sign-in {
+  left: 0;
+  width: 50%;
+  z-index: 2;
+}
+
+.login-container.active .sign-in {
+  transform: translateX(100%);
+}
+
+/* Registro */
+.sign-up {
+  left: 0;
+  width: 50%;
+  opacity: 0;
+  z-index: 1;
+}
+
+.login-container.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+  animation: move 0.6s;
+}
+
+@keyframes move {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
   }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+/* Íconos */
+.social-icons {
+  margin: 30px 0;
+}
+
+.social-icons a {
+  border: 1px solid #ccc;
+  border-radius: 20%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px;
+  width: 40px;
+  height: 40px;
+  background: #dd223b;
+  color: white;
+}
+
+/* Panel toggle */
+.toggle-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  transition: 0.6s ease-in-out;
+  border-radius: 150px 0 0 100px;
+  z-index: 1000;
+}
+
+.login-container.active .toggle-container {
+  transform: translateX(-100%);
+  border-radius: 0 150px 100px 0;
+}
+
+.toggle {
+  height: 100%;
+  background: linear-gradient(to right, #da3535, #e41f4a);
+  color: #fff;
+  position: relative;
+  left: -100%;
+  width: 200%;
+  transition: 0.6s ease-in-out;
+}
+
+.login-container.active .toggle {
+  transform: translateX(50%);
+}
+
+/* Paneles */
+.toggle-panel {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 30px;
+  text-align: center;
+  transition: 0.6s ease-in-out;
+  background: #da291c;
+}
+
+.toggle-left {
+  transform: translateX(-200%);
+}
+
+.login-container.active .toggle-left {
+  transform: translateX(0);
+}
+
+.toggle-right {
+  right: 0;
+}
+
+.login-container.active .toggle-right {
+  transform: translateX(200%);
 }
