@@ -86,7 +86,6 @@ main {
   outline: none;
 }
 
-/* Formularios superpuestos */
 .form-container {
   position: absolute;
   top: 0;
@@ -94,7 +93,6 @@ main {
   transition: 0.6s ease-in-out;
 }
 
-/* Login */
 .sign-in {
   left: 0;
   width: 50%;
