@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Inscripción a eventos</title>
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/formulario.css" />
+  </head>
+
+  <body>
+    <section class="form-container">
+      <div class="form-card">
+        <h1>Inscríbete a un evento</h1>
+        <p>Completa tus datos para participar en nuestras actividades</p>
+
+        <form id="formEvento">
+          <div class="input-group">
+            <label>Nombre completo</label>
+            <input type="text" required />
+          </div>
+
+          <div class="input-group">
+            <label>Correo electrónico</label>
+            <input type="email" required />
+          </div>
+
+          <div class="input-group">
+            <label>Selecciona un evento</label>
+            <select required>
+              <option value="">Elegir evento</option>
+              <option>Taller Inclusión</option>
+              <option>Charla Accesibilidad</option>
+              <option>Voluntariado</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn-submit">Inscribirme →</button>
+          <button type="button" class="btn-back" onclick="volver()">
+            ← Volver
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script src="../script.js/formulario.js"></script>
+  </body>
+</html>
