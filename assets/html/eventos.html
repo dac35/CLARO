@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nuestros Valores - Código Rosa</title>
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/valores.css" />
     <link rel="icon" type="image/png" href="../images/logo.png" />
     <link rel="apple-touch-icon" href="../images/logo.png" />
+    <link rel="stylesheet" href="../css/eventos.css" />
+    <script src="../js/eventos.js"></script>
   </head>
 
   <body>
@@ -28,7 +29,7 @@
               <li>
                 <a href="eventos.html" class="active">Eventos</a>
               </li>
-              <li><a href="contacto.html">Contacto</a></li>
+              <li><a href="./login.html">Registrarse</a></li>
             </ul>
           </nav>
         </div>
@@ -36,160 +37,149 @@
     </header>
 
     <main>
+      <!-- HERO -->
       <section class="hero">
         <div class="container">
           <div class="hero-content fade-in">
-            <h1>Los valores que nos definen</h1>
+            <h1>Eventos que impulsan la inclusión</h1>
             <p class="subtitle">
-              Estos principios guían cada línea de código que escribimos, cada
-              diseño que creamos y cada decisión que tomamos como equipo.
+              Participa en experiencias diseñadas para construir un entorno más
+              diverso,
             </p>
+            <p class="subtitle">equitativo e inclusivo en Claro.</p>
+            <button onclick="scrollEventos()">Explorar eventos</button>
           </div>
         </div>
       </section>
 
-      <section class="valores">
-        <div class="container">
-          <h2>Nuestros pilares fundamentales</h2>
+      <section class="eventos-section">
+        <div class="eventos-header">
+          <h2>Próximos eventos</h2>
+          <a href="#">Ver calendario completo →</a>
+        </div>
 
-          <div class="team-grid">
-            <article class="miembro fade-in">
-              <h3>🤝 Inclusión y Diversidad</h3>
-              <p>
-                <strong>Creemos que la tecnología es para todas.</strong>
-                Trabajamos activamente para crear espacios seguros donde cada
-                voz sea escuchada y valorada. Promovemos la representación
-                femenina en tech y apoyamos a otras mujeres en su journey
-                tecnológico.
-              </p>
-              <p>
-                <em
-                  >"La diversidad de perspectivas enriquece nuestras
-                  soluciones."</em
-                >
-              </p>
-            </article>
+        <div class="eventos-container">
+          <!-- CARD 1 -->
+          <div class="evento-card">
+            <img src="../images/comunicacion.jpeg" alt="evento" />
+            <div class="evento-info">
+              <span class="tag">TALLER</span>
+              <h3>Comunicación inclusiva</h3>
+              <p>Aprende a comunicarte de manera respetuosa y accesible.</p>
 
-            <article class="miembro fade-in">
-              <h3>💡 Innovación Responsable</h3>
-              <p>
-                <strong>Innovamos con propósito.</strong> No creamos tecnología
-                solo porque podemos, sino porque debe resolver problemas reales
-                y mejorar vidas. Consideramos el impacto ético y social de cada
-                proyecto antes de implementarlo.
-              </p>
-              <p>
-                <em
-                  >"La tecnología debe servir a la humanidad, no al revés."</em
-                >
-              </p>
-            </article>
+              <div class="evento-meta">
+                <span>🕒 10:00 AM</span>
+                <span>🌐 Virtual</span>
+              </div>
 
-            <article class="miembro fade-in">
-              <h3>🌱 Aprendizaje Continuo</h3>
-              <p>
-                <strong>Nunca dejamos de aprender.</strong> El mundo tech
-                evoluciona constantemente y nosotras evolucionamos con él.
-                Compartimos conocimiento, celebramos los errores como
-                oportunidades de crecimiento y mantenemos siempre la curiosidad
-                viva.
-              </p>
-              <p>
-                <em
-                  >"Cada día es una oportunidad para ser mejores que ayer."</em
-                >
-              </p>
-            </article>
+              <button onclick="abrirModal('Comunicación inclusiva')">
+                Más información
+              </button>
+            </div>
+          </div>
 
-            <article class="miembro fade-in">
-              <h3>🔗 Colaboración Auténtica</h3>
-              <p>
-                <strong>Juntas somos más fuertes.</strong> Valoramos el trabajo
-                en equipo genuino, donde cada integrante aporta sus fortalezas
-                únicas. Comunicamos con transparencia, damos feedback
-                constructivo y celebramos los éxitos colectivos.
-              </p>
-              <p>
-                <em>"El éxito individual se multiplica cuando se comparte."</em>
-              </p>
-            </article>
+          <!-- CARD 2 -->
+          <div class="evento-card">
+            <img src="../images/historias.jpeg" alt="evento" />
+            <div class="evento-info">
+              <span class="tag">PANEL</span>
+              <h3>Historias que transforman</h3>
+              <p>Experiencias reales que generan impacto positivo.</p>
 
-            <article class="miembro fade-in">
-              <h3>🎨 Creatividad sin Límites</h3>
-              <p>
-                <strong>Pensamos fuera de la caja.</strong> Combinamos arte,
-                tecnología y creatividad para generar soluciones únicas. No nos
-                conformamos con lo convencional; exploramos nuevas formas de
-                expresión digital y experimentamos sin miedo.
-              </p>
-              <p>
-                <em
-                  >"La creatividad es la chispa que convierte el código en
-                  magia."</em
-                >
-              </p>
-            </article>
+              <div class="evento-meta">
+                <span>🕒 4:00 PM</span>
+                <span>📍 Presencial</span>
+              </div>
 
-            <article class="miembro fade-in">
-              <h3>🌍 Impacto Social Positivo</h3>
-              <p>
-                <strong>Usamos nuestras habilidades para el bien.</strong>
-                Priorizamos proyectos que generen un impacto positivo en la
-                sociedad. Creemos que la tecnología puede ser una herramienta
-                poderosa para crear un mundo más justo y equitativo.
-              </p>
-              <p>
-                <em
-                  >"Pequeños cambios en el código pueden generar grandes cambios
-                  en el mundo."</em
-                >
-              </p>
-            </article>
+              <button onclick="abrirModal('Historias que transforman')">
+                Más información
+              </button>
+            </div>
+          </div>
+
+          <!-- CARD 3 -->
+          <div class="evento-card">
+            <img src="../images/construyamos.jpeg" alt="evento" />
+            <div class="evento-info">
+              <span class="tag">ENCUENTRO</span>
+              <h3>Construyamos juntos</h3>
+              <p>Espacio colaborativo para crear soluciones inclusivas.</p>
+
+              <div class="evento-meta">
+                <span>🕒 11:00 AM</span>
+                <span>🌐 Virtual</span>
+              </div>
+
+              <button onclick="abrirModal('Construyamos juntos')">
+                Más información
+              </button>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="identidad">
-        <div class="container">
-          <h2>Cómo vivimos estos valores</h2>
-          <div class="team-grid">
-            <article class="miembro">
-              <h3>🎯 En nuestros proyectos</h3>
-              <p>
-                Cada línea de código incluye comentarios accesibles, diseñamos
-                interfaces inclusivas y priorizamos la performance para que
-                funcione en todos los dispositivos.
-              </p>
-            </article>
+      <!-- MODAL -->
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="cerrarModal()">×</span>
+          <h2 id="tituloEvento"></h2>
+          <p>Este evento promueve la inclusión y diversidad dentro de Claro.</p>
 
-            <article class="miembro">
-              <h3>👥 En nuestra comunidad</h3>
-              <p>
-                Organizamos workshops gratuitos, mentoreamos a jóvenes
-                programadoras y compartimos recursos open source que beneficien
-                a toda la comunidad tech.
-              </p>
-            </article>
+          <input type="text" id="nombre" placeholder="Tu nombre" />
+          <input type="email" id="correo" placeholder="Tu correo" />
 
-            <article class="miembro">
-              <h3>📚 En nuestro aprendizaje</h3>
-              <p>
-                Documentamos nuestros aprendizajes, compartimos fracasos y
-                éxitos, y mantenemos un blog técnico donde exploramos nuevas
-                tecnologías.
-              </p>
-            </article>
-
-            <article class="miembro">
-              <h3>🤝 En nuestras colaboraciones</h3>
-              <p>
-                Buscamos partnerships con organizaciones que compartan nuestros
-                valores y trabajamos en proyectos que amplifiquen voces
-                subrepresentadas en tech.
-              </p>
-            </article>
-          </div>
+          <button onclick="inscribirse()">Inscribirme</button>
+          <p id="mensaje"></p>
         </div>
+      </div>
+
+      <section class="denuncias">
+        <h2>Canal de denuncias</h2>
+        <p>Reporta situaciones que afecten la inclusión y el respeto.</p>
+
+        <form onsubmit="enviarDenuncia(event)">
+          <input
+            type="text"
+            id="nombreDenuncia"
+            placeholder="Tu nombre (opcional)"
+          />
+
+          <input
+            type="email"
+            id="correoDenuncia"
+            placeholder="Tu correo"
+            required
+          />
+
+          <select id="tipoDenuncia" required>
+            <option value="">Selecciona el tipo de denuncia</option>
+            <option>Acoso o discriminación</option>
+            <option>Lenguaje ofensivo</option>
+            <option>Falta de accesibilidad</option>
+            <option>Otro</option>
+          </select>
+
+          <textarea
+            id="mensajeDenuncia"
+            placeholder="Describe la situación"
+            required
+          ></textarea>
+
+          <button type="submit">Enviar denuncia</button>
+        </form>
+
+        <p id="respuestaDenuncia"></p>
+
+        <script>
+          function enviarDenuncia(e) {
+            e.preventDefault();
+
+            document.getElementById("respuestaDenuncia").innerText =
+              "✅ Tu denuncia fue enviada correctamente";
+
+            e.target.reset();
+          }
+        </script>
       </section>
     </main>
 

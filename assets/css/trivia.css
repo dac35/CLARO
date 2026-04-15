@@ -1,0 +1,78 @@
+.trivia-intro {
+  position: relative;
+  height: 550px;
+  overflow: hidden;
+}
+
+.trivia-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trivia-text {
+  width: 50%;
+  z-index: 2;
+}
+
+.trivia-text h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.trivia-text h1 span {
+  color: red;
+}
+
+.trivia-text p {
+  color: #555;
+  margin-bottom: 20px;
+  max-width: 500px;
+}
+
+.btn {
+  background: red;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+
+.trivia-img {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60%;
+  height: 100%;
+}
+
+.trivia-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trivia-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.95) 35%,
+    rgba(255, 255, 255, 0.6) 55%,
+    rgba(255, 255, 255, 0.1) 80%
+  );
+  z-index: 1;
+}
+
+.badge {
+  display: inline-block;
+  background: #eee;
+  padding: 5px 12px;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}

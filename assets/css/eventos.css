@@ -1,0 +1,153 @@
+body {
+  padding-top: 80px;
+}
+
+.eventos-section {
+  padding: 40px;
+}
+
+.eventos-header {
+  display: block;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  background-color: white;
+  text-align: center;
+}
+
+.eventos-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center; /* 🔥 centrado */
+  flex-wrap: wrap; /* 🔥 responsive */
+}
+
+.evento-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 300px;
+  transition: 0.3s;
+}
+
+.evento-card:hover {
+  transform: translateY(-5px);
+}
+
+.evento-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.evento-info {
+  padding: 15px;
+}
+
+.tag {
+  background: #fce4e4;
+  color: #e60000;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.evento-meta {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+button {
+  background: #e60000;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 50%;
+  border-radius: 8px;
+}
+
+/* MODAL */
+.modal {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  margin: 10% auto;
+  width: 300px;
+  border-radius: 10px;
+}
+
+.close {
+  float: right;
+  cursor: pointer;
+}
+
+.hero {
+  height: 400px;
+  display: flex;
+  align-items: center;
+
+  background:
+    linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.7) 20%,
+      rgba(0, 0, 0, 0.4) 50%,
+      rgba(0, 0, 0, 0) 80%
+    ),
+    url("../images/eventos.jpeg");
+
+  background-size: cover;
+  background-position: center;
+
+  color: white;
+}
+
+.hero-content {
+  max-width: 500px;
+  margin-left: 40px;
+  text-align: left;
+}
+
+.card-calendario {
+  background: white;
+  padding: 15px;
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.denuncias {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.denuncias form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.denuncias input,
+.denuncias select,
+.denuncias textarea {
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.denuncias textarea {
+  height: 100px;
+  resize: none;
+}
+
+.denuncias button {
+  width: 200px;
+}
