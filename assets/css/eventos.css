@@ -1,36 +1,159 @@
-body {
-  padding-top: 80px;
+/* RESET + BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
+body {
+  background: #f9f9f9;
+  color: #333;
+  margin: 0;
+}
+
+/* HEADER */
+.header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+.logo {
+  width: 90px;
+}
+
+nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #e60000;
+}
+
+.btn-nav {
+  background: #e60000;
+  color: white !important;
+  padding: 8px 15px;
+  border-radius: 8px;
+}
+
+/* HERO */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  background: url("../images/eventos.jpeg") center/cover no-repeat;
+  overflow: hidden;
+}
+
+.hero-left h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero-left p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.hero-buttons button {
+  margin-right: 10px;
+}
+
+/* BOTONES */
+.btn-primary {
+  margin-top: 15px;
+  background: #e60000;
+  padding: 12px 22px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.btn-primary:hover {
+  background: #c40000;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid #e60000;
+  color: #e60000;
+  padding: 12px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-secondary:hover {
+  background: #e60000;
+  color: white;
+}
+
+.stat-card h3 {
+  color: #e60000;
+  font-size: 24px;
+}
+
+/* EVENTOS */
 .eventos-section {
-  padding: 40px;
+  margin-top: 80px;
 }
 
 .eventos-header {
-  display: block;
+  display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
-  background-color: white;
-  text-align: center;
+  margin-bottom: 30px;
+  padding-left: 40px;
 }
 
 .eventos-container {
   display: flex;
-  gap: 20px;
-  justify-content: center; /* 🔥 centrado */
-  flex-wrap: wrap; /* 🔥 responsive */
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
+/* CARD */
 .evento-card {
   background: white;
-  border-radius: 12px;
+  border-radius: 20px;
   overflow: hidden;
   width: 300px;
-  transition: 0.3s;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
 }
 
 .evento-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* FECHA */
+.fecha {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: #e60000;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 12px;
 }
 
 .evento-card img {
@@ -40,30 +163,82 @@ body {
 }
 
 .evento-info {
-  padding: 15px;
+  padding: 20px;
 }
 
 .tag {
-  background: #fce4e4;
+  background: #ffe5e5;
   color: #e60000;
   padding: 5px 10px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 12px;
 }
 
 .evento-meta {
   display: flex;
   justify-content: space-between;
-  margin: 10px 0;
+  margin: 15px 0;
 }
 
-button {
+/* BOTÓN CARD */
+.evento-card button {
+  width: 100%;
+  padding: 10px;
+  border: none;
   background: #e60000;
   color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.evento-card button:hover {
+  background: #b80000;
+}
+
+/* CTA ROJA */
+.cta {
+  background: #e60000;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  margin-top: 60px;
+}
+
+.cta button {
+  margin-top: 20px;
+  background: white;
+  color: #e60000;
+  padding: 10px 20px;
+  border-radius: 10px;
   border: none;
-  padding: 10px;
-  width: 50%;
-  border-radius: 8px;
+  cursor: pointer;
+}
+
+.beneficios {
+  display: flex;
+  justify-content: center; /* 🔥 centra las cards */
+  flex-wrap: wrap; /* 🔥 responsive */
+  gap: 30px;
+  padding: 40px 20px;
+  max-width: 1000px; /* 🔥 ancho real */
+  margin: auto;
+  text-align: center;
+}
+
+.beneficio {
+  width: 250px; /* 🔥 tamaño tipo card */
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.beneficio:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* MODAL */
@@ -72,15 +247,28 @@ button {
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  background: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
   background: white;
-  padding: 20px;
+  padding: 30px;
   margin: 10% auto;
-  width: 300px;
-  border-radius: 10px;
+  width: 320px;
+  border-radius: 15px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .close {
@@ -88,66 +276,200 @@ button {
   cursor: pointer;
 }
 
-.hero {
-  height: 400px;
-  display: flex;
-  align-items: center;
-
-  background:
-    linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.7) 20%,
-      rgba(0, 0, 0, 0.4) 50%,
-      rgba(0, 0, 0, 0) 80%
-    ),
-    url("../images/eventos.jpeg");
-
-  background-size: cover;
-  background-position: center;
-
-  color: white;
-}
-
-.hero-content {
-  max-width: 500px;
-  margin-left: 40px;
-  text-align: left;
-}
-
-.card-calendario {
-  background: white;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-}
-
-.denuncias {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.denuncias form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.denuncias input,
-.denuncias select,
-.denuncias textarea {
-  width: 300px;
+/* INPUTS */
+input {
+  width: 100%;
   padding: 10px;
+  margin: 10px 0;
   border-radius: 8px;
   border: 1px solid #ccc;
 }
 
-.denuncias textarea {
-  height: 100px;
-  resize: none;
+input:focus {
+  outline: none;
+  border-color: #e60000;
 }
 
-.denuncias button {
-  width: 200px;
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 40px;
+  background: #111;
+  color: white;
+  margin-top: 30px;
+}
+
+/* =========================
+   AJUSTE GLOBAL DE ANCHO
+========================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* =========================
+   EVENTOS CENTRADOS
+========================= */
+.eventos-section {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.eventos-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* CARDS MÁS GRANDES */
+.evento-card {
+  width: 320px;
+}
+
+/* =========================
+   CTA MEJORADO
+========================= */
+.cta {
+  padding: 80px 20px;
+}
+
+.cta h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   HEADER MEJOR
+========================= */
+.header-content {
+  max-width: 1200px;
+  margin: auto;
+}
+
+/* HERO REAL */
+.hero {
+  position: relative;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  background: url("../images/eventos.jpeg") center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.98) 5%,
+    rgba(255, 255, 255, 0.85) 20%,
+    rgba(255, 255, 255, 0.4) 40%,
+    rgba(255, 255, 255, 0) 60%
+  );
+}
+
+/* CONTENIDO */
+.hero-content {
+  position: relative;
+  max-width: 1200px;
+  padding: 0 20px;
+  margin-left: 400px;
+}
+
+.hero-badge {
+  background: #ffe5e5;
+  color: #e60000;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.hero-content h1 {
+  font-size: 52px;
+  font-weight: 700;
+}
+
+.hero-content p {
+  max-width: 520px;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.hero h1 {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+.hero h1 span {
+  color: #e60000;
+}
+
+.hero p {
+  margin: 15px 0;
+  max-width: 500px;
+}
+
+/* BOTÓN */
+.btn-primary {
+  background: #e60000;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-primary:hover {
+  background: #b80000;
+}
+
+/* BARRA NEGRA FLOTANTE */
+.hero-stats {
+  position: absolute;
+  bottom: 20px;
+  left: 50%; /* 🔥 CLAVE */
+  transform: translateX(-30%);
+  background: rgba(39, 37, 37, 0.75);
+  color: white;
+  display: flex;
+  gap: 50px;
+  padding: 20px 40px;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stat p {
+  margin: 0;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.cta {
+  background: #e60000;
+  color: white;
+  padding: 30px 60px;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 60px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cta h2 {
+  font-size: 20px;
+}
+
+.cta button {
+  background: white;
+  color: #e60000;
+  padding: 10px 20px;
+  border-radius: 10px;
 }
