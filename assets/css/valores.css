@@ -1,47 +1,42 @@
-/* Estilos específicos para la página "Nuestros Valores" */
-
-/* Tarjetas de valores con énfasis especial */
-.valores .miembro h3 {
-  font-size: 1.4rem;
-  margin-bottom: var(--espacio-md);
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
 
-.valores .miembro p strong {
-  color: var(--rosa-vibrante);
-  font-weight: 700;
-  font-size: 1.05em;
+.modal-content {
+  background: white;
+  padding: 30px;
+  margin: 10% auto;
+  width: 300px;
+  border-radius: 10px;
 }
 
-.valores .miembro p em {
-  display: block;
-  margin-top: var(--espacio-sm);
-  padding: var(--espacio-sm);
-  background: var(--rosa-suave);
-  color: var(--negro-suave);
-  border-radius: var(--radio-sm);
-  font-style: italic;
-  font-weight: 500;
-  border-left: 4px solid var(--rosa-vibrante);
+.close {
+  float: right;
+  cursor: pointer;
 }
 
-/* Efectos especiales para valores */
-.valores .miembro:hover {
-  transform: translateY(-12px);
-  box-shadow: var(--sombra-fuerte);
+.miembro {
+  cursor: pointer;
+  transition: transform 0.3s;
 }
 
-.valores .miembro::before {
-  height: 6px;
+.miembro:hover {
+  transform: scale(1.05);
 }
 
-/* Responsive específico para valores */
-@media (max-width: 768px) {
-  .valores .miembro h3 {
-    font-size: 1.2rem;
-  }
+button {
+  background: #e60000;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+}
 
-  .valores .miembro p em {
-    padding: var(--espacio-xs);
-    font-size: 0.9rem;
-  }
+#mensaje {
+  color: green;
 }
