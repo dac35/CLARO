@@ -1,6 +1,6 @@
 .trivia-intro {
   position: relative;
-  height: 550px;
+  height: 100vh;
   overflow: hidden;
 }
 
@@ -42,11 +42,12 @@
 }
 
 .trivia-img {
-  position: absolute;
-  right: 0;
+  position: fixed;
   top: 0;
-  width: 60%;
-  height: 100%;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
 }
 
 .trivia-img img {
@@ -54,16 +55,15 @@
   height: 100%;
   object-fit: cover;
 }
-
 .trivia-intro::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.95) 35%,
-    rgba(255, 255, 255, 0.6) 55%,
-    rgba(255, 255, 255, 0.1) 80%
+    120deg,
+    rgba(255, 255, 255, 0.9) 25%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 75%
   );
   z-index: 1;
 }

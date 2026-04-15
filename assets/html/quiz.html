@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../js/quiz.js"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <title>Claro</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="../../index.html" class="logo">
+            <img
+              class="logoclaro"
+              src="../images/logo-claro-rojo.png"
+              alt="Claro"
+            />
+          </a>
+
+          <nav>
+            <ul>
+              <li><a href="../../index.html">Inicio</a></li>
+              <li><a href="trivia.html">Trivia</a></li>
+              <li><a href="eventos.html">Eventos</a></li>
+              <li><a href="contacto.html" class="active">Registrarse</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main class="quiz-container">
+      <!-- PROGRESO -->
+      <div class="progress">
+        <span id="contador">Pregunta 1 / 5</span>
+        <div class="bar">
+          <div id="barra"></div>
+        </div>
+      </div>
+
+      <!-- TIMER + PUNTAJE -->
+      <div class="info">
+        <div class="timer">⏱️ <span id="tiempo">10</span>s</div>
+        <div class="score">⭐ <span id="puntaje">0</span> pts</div>
+      </div>
+
+      <!-- PREGUNTA -->
+      <h2 id="pregunta">Cargando pregunta...</h2>
+
+      <!-- RESPUESTAS -->
+      <div id="respuestas"></div>
+
+      <!-- BOTÓN -->
+      <button id="siguiente">Continuar →</button>
+    </main>
+
+    <!-- RESULTADO / CERTIFICADO -->
+    <section id="resultado" class="hidden">
+      <div class="certificado">
+        <h2>🎓 ¡Felicidades!</h2>
+
+        <p id="nombreFinal"></p>
+        <p id="puntajeFinal"></p>
+        <p id="medalla"></p>
+
+        <button onclick="location.href = 'trivia.html'">
+          Volver al inicio
+        </button>
+      </div>
+
+      <!-- RANKING -->
+      <div id="ranking"></div>
+    </section>
+  </body>
+</html>
