@@ -2,23 +2,23 @@
 
 /* Header */
 header {
-  padding: var(--espacio-md) 0;
-  position: sticky;
+  position: fixed;
   top: 0;
+  width: 100%;
   z-index: 1000;
   background-color: white;
   box-shadow: var(--sombra-suave);
-}
-
-.logoclaro {
-  height: 40px;
-  width: auto;
+  padding: 15px 0; /* 🔥 vuelve a natural */
 }
 
 .header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.logoclaro {
+  height: 40px;
 }
 
 .logo {
