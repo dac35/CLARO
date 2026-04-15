@@ -134,10 +134,10 @@ h2::after {
 
 .miembro,
 .contenido {
-  background: var(--blanco-puro);
+  background: #ebedef;
   padding: var(--espacio-xl);
   border-radius: var(--radio-lg);
-  box-shadow: var(--sombra-suave);
+  box-shadow: #2d3748;
   text-align: center;
   transition: all 0.3s ease;
   position: relative;
