@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="module" src="../js/quiz.js"></script>
+    <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/quiz.css" />
+    <title>Claro</title>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <div class="header-content">
+          <a href="../../index.html" class="logo">
+            <img
+              class="logoclaro"
+              src="../images/logo-claro-rojo.png"
+              alt="Claro"
+            />
+          </a>
+
+          <nav>
+            <ul>
+              <li><a href="../../index.html">Inicio</a></li>
+              <li><a href="trivia.html">Trivia</a></li>
+              <li><a href="eventos.html">Eventos</a></li>
+              <li><a href="contacto.html" class="active">Registrarse</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <div class="card">
+      <!-- HEADER -->
+      <div class="card-header">
+        <div class="logo">
+          <span class="circle">Claro</span>
+          <p>Claro por la Inclusión</p>
+        </div>
+        <button class="btn-top">Comenzar</button>
+      </div>
+
+      <!-- PROGRESO -->
+      <div class="progress-section">
+        <p class="pregunta">
+          Pregunta <span id="current">1</span> / <span id="total">5</span>
+        </p>
+
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="info-extra">
+          <span class="pts" id="points">0 pts</span>
+          <span class="timer">⏱ <span id="time">15</span>s</span>
+        </div>
+      </div>
+
+      <!-- PREGUNTA -->
+      <h2 class="question" id="question">Aquí va la pregunta...</h2>
+
+      <!-- IMAGEN -->
+      <img src="" alt="imagen pregunta" class="image" id="image" />
+
+      <!-- OPCIONES -->
+      <div class="options" id="options">
+        <!-- JS va a generar botones aquí -->
+      </div>
+
+      <!-- MENSAJE -->
+      <p id="feedback" class="feedback"></p>
+
+      <!-- BOTÓN -->
+      <button class="btn-continue" id="nextBtn" disabled>Continuar →</button>
+    </div>
+  </body>
+</html>
