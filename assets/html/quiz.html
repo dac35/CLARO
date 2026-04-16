@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script type="module" src="../js/quiz.js"></script>
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <link rel="stylesheet" href="/assets/css/quiz.css" />
     <title>Claro</title>
   </head>
   <body>
@@ -30,47 +31,48 @@
         </div>
       </div>
     </header>
-    <main class="quiz-container">
+    <div class="card">
+      <!-- HEADER -->
+      <div class="card-header">
+        <div class="logo">
+          <span class="circle">Claro</span>
+          <p>Claro por la Inclusión</p>
+        </div>
+        <button class="btn-top">Comenzar</button>
+      </div>
+
       <!-- PROGRESO -->
-      <div class="progress">
-        <span id="contador">Pregunta 1 / 5</span>
-        <div class="bar">
-          <div id="barra"></div>
+      <div class="progress-section">
+        <p class="pregunta">
+          Pregunta <span id="current">1</span> / <span id="total">5</span>
+        </p>
+
+        <div class="progress-bar">
+          <div class="progress" id="progress"></div>
+        </div>
+
+        <div class="info-extra">
+          <span class="pts" id="points">0 pts</span>
+          <span class="timer">⏱ <span id="time">15</span>s</span>
         </div>
       </div>
 
-      <!-- TIMER + PUNTAJE -->
-      <div class="info">
-        <div class="timer">⏱️ <span id="tiempo">10</span>s</div>
-        <div class="score">⭐ <span id="puntaje">0</span> pts</div>
+      <!-- PREGUNTA -->
+      <h2 class="question" id="question">Aquí va la pregunta...</h2>
+
+      <!-- IMAGEN -->
+      <img src="" alt="imagen pregunta" class="image" id="image" />
+
+      <!-- OPCIONES -->
+      <div class="options" id="options">
+        <!-- JS va a generar botones aquí -->
       </div>
 
-      <!-- PREGUNTA -->
-      <h2 id="pregunta">Cargando pregunta...</h2>
-
-      <!-- RESPUESTAS -->
-      <div id="respuestas"></div>
+      <!-- MENSAJE -->
+      <p id="feedback" class="feedback"></p>
 
       <!-- BOTÓN -->
-      <button id="siguiente">Continuar →</button>
-    </main>
-
-    <!-- RESULTADO / CERTIFICADO -->
-    <section id="resultado" class="hidden">
-      <div class="certificado">
-        <h2>🎓 ¡Felicidades!</h2>
-
-        <p id="nombreFinal"></p>
-        <p id="puntajeFinal"></p>
-        <p id="medalla"></p>
-
-        <button onclick="location.href = 'trivia.html'">
-          Volver al inicio
-        </button>
-      </div>
-
-      <!-- RANKING -->
-      <div id="ranking"></div>
-    </section>
+      <button class="btn-continue" id="nextBtn" disabled>Continuar →</button>
+    </div>
   </body>
 </html>
