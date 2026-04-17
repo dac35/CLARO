@@ -1,187 +1,269 @@
-import { mostrarResultado } from "./puntaje.js";
-
-const questionEl = document.getElementById("question");
-const imageEl = document.getElementById("image");
-const optionsEl = document.getElementById("options");
-const nextBtn = document.getElementById("nextBtn");
-const pointsEl = document.getElementById("points");
-const currentEl = document.getElementById("current");
-const progressEl = document.getElementById("progress");
-const feedbackEl = document.getElementById("feedback");
-
-let indice = 0;
-let puntaje = 0;
-
-const preguntas = [
+const questions = [
   {
-    pregunta: "¿Qué significa DEI en el entorno laboral?",
-    imagen: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-    opciones: [
-      "Desarrollo, Estrategia e Innovación",
+    question: "¿Qué significa DEI?",
+    options: [
       "Diversidad, Equidad e Inclusión",
-      "Dirección, Evaluación e Impacto",
-      "Dinámica Empresarial Integral",
+      "Desarrollo, Educación e Innovación",
+      "Derechos, Ética e Igualdad",
+      "Datos, Estrategia e Impacto",
     ],
-    correcta: 1,
+    answer: "Diversidad, Equidad e Inclusión",
   },
   {
-    pregunta: "¿Cuál es una acción inclusiva en el trabajo?",
-    imagen: "https://images.unsplash.com/photo-1552664730-d307ca884978",
-    opciones: [
-      "Ignorar a nuevos compañeros",
-      "Asignar tareas sin explicación",
-      "Presentar y apoyar a nuevos integrantes",
-      "Evitar trabajar en equipo",
-    ],
-    correcta: 2,
-  },
-  {
-    pregunta: "¿Qué promueve la diversidad?",
-    imagen: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac",
-    opciones: [
-      "Que todos piensen igual",
-      "La inclusión de diferentes perspectivas",
+    question: "¿Qué busca la diversidad?",
+    options: [
       "Eliminar diferencias",
-      "Evitar conflictos",
+      "Valorar las diferencias entre personas",
+      "Hacer a todos iguales",
+      "Ignorar las culturas",
     ],
-    correcta: 1,
+    answer: "Valorar las diferencias entre personas",
   },
   {
-    pregunta: "¿Qué es la equidad?",
-    imagen: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
-    opciones: [
+    question: "¿Qué significa equidad?",
+    options: [
       "Dar lo mismo a todos",
-      "Ignorar necesidades individuales",
-      "Dar a cada persona lo que necesita",
-      "Tratar a todos de forma idéntica",
+      "Dar ventajas a algunos",
+      "Dar oportunidades justas según necesidades",
+      "Ignorar las diferencias",
     ],
-    correcta: 2,
+    answer: "Dar oportunidades justas según necesidades",
   },
   {
-    pregunta: "¿Qué es la inclusión?",
-    imagen: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-    opciones: [
-      "Excluir a quienes son diferentes",
-      "Crear espacios donde todos participen",
+    question: "¿Qué promueve la inclusión?",
+    options: [
+      "Excluir a personas diferentes",
+      "Crear espacios donde todos se sientan parte",
       "Trabajar solo con iguales",
-      "Evitar opiniones distintas",
+      "Evitar la participación",
     ],
-    correcta: 1,
+    answer: "Crear espacios donde todos se sientan parte",
   },
   {
-    pregunta: "¿Qué actitud fomenta un ambiente inclusivo?",
-    imagen: "https://images.unsplash.com/photo-1556761175-4b46a572b786",
-    opciones: [
-      "Escuchar y respetar opiniones",
-      "Imponer ideas",
-      "Ignorar diferencias",
-      "Criticar constantemente",
+    question: "¿Por qué es importante la DEI en el trabajo?",
+    options: [
+      "Para evitar trabajar",
+      "Para crear ambientes más justos y colaborativos",
+      "Para reducir equipos",
+      "Para limitar ideas",
     ],
-    correcta: 0,
+    answer: "Para crear ambientes más justos y colaborativos",
   },
   {
-    pregunta: "¿Por qué es importante la DEI?",
-    imagen: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f",
-    opciones: [
-      "Reduce la productividad",
-      "Mejora la colaboración y creatividad",
-      "Genera conflictos",
-      "Limita ideas",
+    question: "¿Qué implica la inclusión en un equipo?",
+    options: [
+      "Escuchar y respetar a todos",
+      "Ignorar opiniones",
+      "Solo aceptar una idea",
+      "Excluir a algunos",
     ],
-    correcta: 1,
+    answer: "Escuchar y respetar a todos",
   },
   {
-    pregunta: "¿Qué acción NO es inclusiva?",
-    imagen: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d",
-    opciones: [
-      "Respetar opiniones",
-      "Discriminar a compañeros",
-      "Escuchar activamente",
-      "Apoyar al equipo",
+    question: "¿La diversidad incluye qué aspecto?",
+    options: [
+      "Solo edad",
+      "Solo género",
+      "Diferencias como cultura, género y pensamiento",
+      "Solo nacionalidad",
     ],
-    correcta: 1,
+    answer: "Diferencias como cultura, género y pensamiento",
   },
   {
-    pregunta: "¿Cómo puedes apoyar la diversidad?",
-    imagen: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d",
-    opciones: [
-      "Ignorando diferencias",
-      "Promoviendo respeto",
-      "Evitando interacción",
-      "Trabajando solo",
+    question: "¿Qué pasa cuando aplicamos DEI?",
+    options: [
+      "Hay menos respeto",
+      "Se crean ambientes negativos",
+      "Se generan espacios más humanos y colaborativos",
+      "Se eliminan oportunidades",
     ],
-    correcta: 1,
+    answer: "Se generan espacios más humanos y colaborativos",
   },
   {
-    pregunta: "¿Qué beneficio trae la inclusión?",
-    imagen: "https://images.unsplash.com/photo-1552664730-d307ca884978",
-    opciones: [
-      "Menos innovación",
-      "Ambiente laboral negativo",
-      "Mayor compromiso del equipo",
-      "Menor productividad",
+    question: "¿Qué acción refleja equidad?",
+    options: [
+      "Dar lo mismo a todos",
+      "Ignorar necesidades",
+      "Apoyar según lo que cada persona necesita",
+      "Excluir a algunos",
     ],
-    correcta: 2,
+    answer: "Apoyar según lo que cada persona necesita",
+  },
+  {
+    question: "¿Qué busca esta trivia?",
+    options: [
+      "Confundir al usuario",
+      "Evaluar conocimientos sobre inclusión",
+      "Eliminar ideas",
+      "Reducir participación",
+    ],
+    answer: "Evaluar conocimientos sobre inclusión",
   },
 ];
+let current = 0;
+let score = 0;
+let time = 10;
+let interval;
+let answered = false;
 
-function cargarPregunta() {
-  const actual = preguntas[indice];
+const questionEl = document.getElementById("question");
+const optionsEl = document.getElementById("options");
+const timerEl = document.getElementById("timer");
+const scoreEl = document.getElementById("score");
+const timeBar = document.getElementById("timeBar");
+const nextBtn = document.getElementById("nextBtn");
 
-  questionEl.textContent = actual.pregunta;
-  imageEl.src = actual.imagen;
+const correctSound = document.getElementById("correctSound");
+const wrongSound = document.getElementById("wrongSound");
+const tickSound = document.getElementById("tickSound");
+const startBtn = document.getElementById("startBtn");
 
-  currentEl.textContent = indice + 1;
-  progressEl.style.width = `${((indice + 1) / preguntas.length) * 100}%`;
+startBtn.addEventListener("click", () => {
+  const name = document.getElementById("nameInput").value;
+  const email = document.getElementById("emailInput").value;
 
-  optionsEl.innerHTML = "";
-  feedbackEl.textContent = "";
-  nextBtn.disabled = true;
-
-  actual.opciones.forEach((opcion, i) => {
-    const btn = document.createElement("button");
-    btn.textContent = opcion;
-    btn.classList.add("option");
-
-    btn.onclick = () => seleccionarRespuesta(btn, i);
-
-    optionsEl.appendChild(btn);
-  });
-}
-
-function seleccionarRespuesta(boton, index) {
-  const correcta = preguntas[indice].correcta;
-  const botones = document.querySelectorAll(".option");
-
-  botones.forEach((btn) => btn.classList.add("disabled"));
-
-  if (index === correcta) {
-    boton.classList.add("correct");
-    puntaje += 10;
-    feedbackEl.textContent = "+10 pts 🎉";
-  } else {
-    boton.classList.add("wrong");
-    botones[correcta].classList.add("correct");
-    feedbackEl.textContent = "Respuesta incorrecta ";
+  if (!name || !email) {
+    alert("Completa todos los campos");
+    return;
   }
 
-  pointsEl.textContent = `${puntaje} pts`;
+  // guardar datos
+  localStorage.setItem("nombre", name);
+  localStorage.setItem("email", email);
+
+  // ocultar pantalla inicial
+  document.getElementById("startScreen").style.display = "none";
+
+  // mostrar quiz
+  document.getElementById("quizContainer").style.display = "block";
+
+  // iniciar quiz
+  loadQuestion();
+});
+
+function startTimer() {
+  clearInterval(interval);
+  time = 10;
+
+  timerEl.textContent = `⏱ ${time}`;
+  timeBar.style.width = "100%";
+
+  interval = setInterval(() => {
+    time--;
+
+    timerEl.textContent = `⏱ ${time}`;
+
+    // 🔊 tick
+    tickSound.currentTime = 0;
+    tickSound.play();
+
+    let percent = (time / 10) * 100;
+    timeBar.style.width = percent + "%";
+
+    if (time <= 5) {
+      timeBar.style.background = "#ff9800";
+    }
+    if (time <= 3) {
+      timeBar.style.background = "#e60000";
+    }
+
+    if (time <= 0) {
+      clearInterval(interval);
+      disableOptions();
+      nextBtn.disabled = false;
+    }
+  }, 1000);
+}
+
+function loadQuestion() {
+  answered = false;
+  nextBtn.disabled = true;
+
+  const q = questions[current];
+  questionEl.textContent = q.question;
+  optionsEl.innerHTML = "";
+
+  q.options.forEach((opt) => {
+    const btn = document.createElement("button");
+    btn.textContent = opt;
+
+    btn.onclick = () => checkAnswer(btn, opt);
+    optionsEl.appendChild(btn);
+  });
+
+  startTimer();
+}
+startBtn.addEventListener("click", () => {
+  const name = document.getElementById("nameInput").value;
+  const email = document.getElementById("emailInput").value;
+
+  if (!name || !email) {
+    alert("Completa todos los campos");
+    return;
+  }
+
+  correctSound.play().then(() => correctSound.pause());
+  wrongSound.play().then(() => wrongSound.pause());
+  tickSound.play().then(() => tickSound.pause());
+
+  localStorage.setItem("nombre", name);
+  localStorage.setItem("email", email);
+
+  document.getElementById("startScreen").style.display = "none";
+  document.getElementById("quizContainer").style.display = "block";
+
+  loadQuestion();
+});
+function checkAnswer(button, selected) {
+  if (answered) return;
+
+  answered = true;
+  clearInterval(interval);
+
+  const correct = questions[current].answer;
+
+  const buttons = optionsEl.querySelectorAll("button");
+
+  buttons.forEach((btn) => {
+    if (btn.textContent === correct) {
+      btn.classList.add("correct");
+    }
+  });
+
+  if (selected === correct) {
+    score += 10;
+    button.classList.add("correct");
+    correctSound.play();
+  } else {
+    button.classList.add("wrong");
+    wrongSound.play();
+  }
+
+  scoreEl.textContent = `⭐ ${score}`;
   nextBtn.disabled = false;
 }
 
-let quizTerminado = false;
+function disableOptions() {
+  const buttons = optionsEl.querySelectorAll("button");
+  buttons.forEach((btn) => (btn.disabled = true));
+}
 
-nextBtn.onclick = () => {
-  if (quizTerminado) return;
+function nextQuestion() {
+  current++;
 
-  indice++;
-
-  if (indice < preguntas.length) {
-    cargarPregunta();
+  if (current < questions.length) {
+    loadQuestion();
   } else {
-    quizTerminado = true;
-    mostrarResultado(puntaje);
+    endGame();
   }
-};
+}
 
-cargarPregunta();
+function endGame() {
+  import("./puntaje.js").then(({ mostrarResultado }) => {
+    mostrarResultado(score);
+  });
+}
+
+nextBtn.addEventListener("click", nextQuestion);
+
+loadQuestion();
