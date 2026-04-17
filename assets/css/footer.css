@@ -1,15 +1,19 @@
 /* Estilos para Footer */
 
 footer {
-  background: linear-gradient(135deg, var(--gris-claro) 0%, #e8f4fd 100%);
-  color: var(--azul-tech);
+  background: #111;
+  color: white;
   padding: var(--espacio-lg) 0 var(--espacio-md);
   margin-top: var(--espacio-md);
   border-top: 3px solid var(--gradiente-principal);
   position: relative;
   display: flex;
+  text-align: center;
 }
-
+footer {
+  margin-top: 0;
+  padding: 40px;
+}
 footer::before {
   content: "";
   position: absolute;
@@ -48,12 +52,12 @@ footer::before {
 
 .footer-text-section p:first-child {
   font-weight: 500;
-  color: var(--gris-moderno);
+  color: white;
 }
 
 .footer-text-section p:last-child {
   font-style: italic;
-  color: var(--rosa-vibrante);
+  color: white;
   font-weight: 500;
 }
 

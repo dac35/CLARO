@@ -1,8 +1,5 @@
 import { mostrarResultado } from "./puntaje.js";
 
-/* =========================
-   ELEMENTOS DEL DOM
-========================= */
 const questionEl = document.getElementById("question");
 const imageEl = document.getElementById("image");
 const optionsEl = document.getElementById("options");
@@ -12,15 +9,9 @@ const currentEl = document.getElementById("current");
 const progressEl = document.getElementById("progress");
 const feedbackEl = document.getElementById("feedback");
 
-/* =========================
-   VARIABLES
-========================= */
 let indice = 0;
 let puntaje = 0;
 
-/* =========================
-   PREGUNTAS (DEI)
-========================= */
 const preguntas = [
   {
     pregunta: "¿Qué significa DEI en el entorno laboral?",
@@ -178,12 +169,17 @@ function seleccionarRespuesta(boton, index) {
   nextBtn.disabled = false;
 }
 
+let quizTerminado = false;
+
 nextBtn.onclick = () => {
+  if (quizTerminado) return;
+
   indice++;
 
   if (indice < preguntas.length) {
     cargarPregunta();
   } else {
+    quizTerminado = true;
     mostrarResultado(puntaje);
   }
 };
