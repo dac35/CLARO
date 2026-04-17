@@ -3,8 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Claro</title>
+    <title>Claro por la Inclusión</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/styles.css" />
+
     <link rel="stylesheet" href="./assets/css/home.css" />
     <link rel="icon" type="image/png" href="./assets/images/logo.png" />
     <link rel="apple-touch-icon" href="./assets/images/logo.png" />
@@ -12,70 +17,79 @@
   </head>
 
   <body>
-    <header>
-      <div class="container">
-        <div class="header-content">
-          <a href="index.html" class="logo">
-            <img
-              class="logoclaro"
-              src="./assets/images/logo-claro-rojo.png"
-              alt="logoclaro"
-            />
-          </a>
-          <nav>
-            <ul>
-              <li><a href="index.html" class="active">Inicio</a></li>
-              <li><a href="./assets/html/trivia.html">Trivia</a></li>
-              <li><a href="./assets/html/eventos.html">Eventos</a></li>
-              <li><a href="./assets/html/login.html">Registrarse</a></li>
-            </ul>
-          </nav>
-        </div>
+    <header class="header">
+      <div class="container header-content">
+        <img src="./assets/images/logo-claro-rojo.png" class="logo" />
+
+        <nav>
+          <a href="../../index.html" class="active">Inicio</a>
+          <a href="/assets/html/trivia.html" class="active">Aprende</a>
+          <a href="/assets/html/eventos.html" class="active">Eventos</a>
+        </nav>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <div class="hero-content">
-          <div class="hero-text">
-            <h1 class>Bienvenidas a nuestro</h1>
-            <p class="subtitle">Somos Código Rosa...</p>
-            <button class="btn">Explorar</button>
-          </div>
+    <section class="hero">
+      <div class="carousel">
+        <div class="slide active">
+          <img src="/assets/images/portada.png" />
         </div>
-      </section>
 
-      <section class="identidad">
-        <div class="container">
-          <h2>¿Qué encontrarás?</h2>
-          <div class="team-grid">
-            <article class="contenido">
-              <img src="/assets/images/trivia.png" alt="" />
-              <h3>Trivia interactica</h3>
-              <p>Responde situaciones reales y descubre tu perfil.</p>
-            </article>
-            <article class="contenido">
-              <img src="/assets/images/evento.png" alt="" />
-              <h3>Eventos</h3>
-              <p>Conoce y participa en actividades de inclusión.</p>
-            </article>
-            <article class="contenido">
-              <img src="/assets/images/personas.png" alt="" />
-              <h3>Aprendizaje</h3>
-              <p>
-                Accede a contenido claros, sobre DEI (diversidad, equidad e
-                inclusión).
-              </p>
-            </article>
-            <article class="contenido">
-              <img src="/assets/images/compromiso.png" alt="check" />
-              <h3>Compromiso</h3>
-              <p>Descubre cómo aportar y ser parte del cambio.</p>
-            </article>
-          </div>
+        <div class="slide">
+          <img src="/assets/images/presentar.png" />
         </div>
-      </section>
-    </main>
+
+        <div class="slide">
+          <img
+            src="/assets/images/ChatGPT Image 17 abr 2026, 02_15_14 p.m..png"
+          />
+        </div>
+      </div>
+
+      <div class="overlay">
+        <h1>Descubre qué tan <span>inclusivo eres</span></h1>
+        <p>
+          Explora, aprende y participa en una experiencia interactiva sobre
+          inclusión.
+        </p>
+
+        <a href="/assets/html/trivia.html" class="btn-main">
+          Aprende sobre la DEI
+        </a>
+      </div>
+
+      <div class="dots">
+        <span class="dot active"></span>
+        <span class="dot"></span>
+        <span class="dot"></span>
+      </div>
+    </section>
+
+    <section class="identidad">
+      <div class="container">
+        <h2>¿Qué encontrarás?</h2>
+        <div class="team-grid">
+          <article class="contenido">
+            <img src="/assets/images/trivia.png" alt="" />
+            <h3>Trivia interactica</h3>
+            <p>Responde situaciones reales y descubre tu perfil.</p>
+          </article>
+          <article class="contenido">
+            <img src="/assets/images/evento.png" alt="" />
+            <h3>Eventos</h3>
+            <p>Conoce y participa en actividades de inclusión.</p>
+          </article>
+          <article class="contenido">
+            <img src="/assets/images/personas.png" alt="" />
+            <h3>Aprendizaje</h3>
+            <p>
+              Accede a contenido claros, sobre DEI (diversidad, equidad e
+              inclusión).
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <footer>
       <div class="footer-content">
@@ -88,9 +102,10 @@
         </div>
         <div class="footer-text-section">
           <p>&copy; 2026 Claro. Todos los derechos reservados.</p>
-          <p>Construyendo el futuro con código y creatividad</p>
         </div>
       </div>
     </footer>
+
+    <script src="/assets/js/home.js"></script>
   </body>
 </html>

@@ -31,10 +31,18 @@ async function mostrarRanking() {
 }
 
 export async function mostrarResultado(puntaje) {
-  const nombre = prompt("Ingresa tu nombre:");
+  let nombre = localStorage.getItem("nombre");
+
+  if (!nombre) {
+    nombre = prompt("Ingresa tu nombre:");
+  }
 
   if (!nombre) return;
 
+  localStorage.setItem("nombre", nombre);
+  localStorage.setItem("puntaje", puntaje);
+
   await guardarPuntaje(nombre, puntaje);
-  await mostrarRanking();
+
+  window.location.href = "../html/certificado.html";
 }
