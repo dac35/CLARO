@@ -1,102 +1,179 @@
-.hero {
-  position: relative;
-  overflow: hidden;
-  padding: var(--espacio-2xl) 0 var(--espacio-xl);
-  background: var(--gradiente-suave);
-}
-
-/* Estilos Globales */
-:root {
-  --color-claro: #da291c; /* Color rojo de Claro */
-  --color-texto: #fffffff5;
-  --color-subtitulo: #666;
-  --fuente-principal:
-    "Claro", sans-serif; /* Nombre hipotético, reemplaza por la real */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  font-family: var(--fuente-principal);
-  margin: 0;
-  color: var(--color-texto);
+  background: #f5f6fa;
 }
 
-h1 {
-  font-size: 3rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-}
-
-h1 .resaltado {
-  color: var(--color-claro);
-}
-
-.subtitle {
-  font-size: 1.25rem;
-  color: var(--color-subtitulo);
-  margin-top: 0;
-  margin-bottom: 2rem;
-}
-
-/* Sección Hero */
-/*.hero {
-  position: relative;
-  padding: 0 0;
-  height: 600px;
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  background: white;
+  position: fixed;
   width: 100%;
-  overflow: hidden;
-}*/
-.hero {
-  background-image: url("../images/portada.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 700px;
-}
-.hero-text {
-  position: absolute;
+  top: 0;
+  z-index: 10;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 1200px;
-  margin: 0 auto;
-  height: 100%;
+.logo {
   display: flex;
   align-items: center;
+  gap: 10px;
+  font-weight: 600;
 }
-.hero-content::before {
+
+.logo-circle {
+  width: 25px;
+  height: 25px;
+  background: red;
+  border-radius: 50%;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+nav a.active {
+  color: red;
+  font-weight: 600;
+}
+
+.btn-red {
+  background: rgb(255, 255, 255);
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+/* HERO */
+
+.hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  backdrop-filter: var(--color-texto);
-} /* Botones */
-.btn {
-  background-color: var(--color-claro);
-  color: #fff;
+  background: linear-gradient(
+    100deg,
+    rgba(245, 242, 242, 0.9) 25%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.2) 75%
+  );
+  z-index: 1;
+}
+.hero {
+  margin-top: 0px;
+  position: relative;
+  height: 90vh;
+  overflow: hidden;
+  z-index: 0;
+}
+/* CARRUSEL */
+.carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: 1s;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* OVERLAY TEXTO */
+.overlay {
+  position: relative;
+  top: 25%;
+  left: 8%;
+  max-width: 500px;
+  color: black;
+  z-index: 2;
+}
+
+.overlay h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 48px;
+}
+
+.overlay h1 span {
+  color: red;
+}
+
+.overlay p {
+  margin: 15px 0;
+  color: #444;
+}
+
+.btn-main {
+  background: red;
+  color: white;
+  padding: 12px 20px;
   border: none;
-  padding: 1rem 2.5rem;
-  font-size: 1.1rem;
-  font-weight: bold;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
 }
 
-.btn:hover {
-  background-color: #b12017; /* Un rojo más oscuro al pasar el ratón */
+/* DOTS */
+.dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
 }
-@media (max-width: 768px) {
-  .hero-content {
-    flex-direction: column;
-    text-align: center;
-  }
 
-  .hero-text {
-    text-align: center;
-  }
+.dot {
+  height: 10px;
+  width: 10px;
+  margin: 0 5px;
+  display: inline-block;
+  background: #ccc;
+  border-radius: 50%;
+}
 
-  .hero-img img {
-    width: 100%;
-  }
+.dot.active {
+  background: red;
+}
+
+/* CARDS */
+.cards {
+  margin: 50px;
+  padding: 60px;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
