@@ -1,47 +1,4 @@
 // ===============================
-// MODAL MEJORADO
-// ===============================
-function abrirModal(titulo) {
-  const modal = document.getElementById("modal");
-  const tituloEvento = document.getElementById("tituloEvento");
-
-  tituloEvento.innerText = titulo;
-
-  modal.style.display = "block";
-  modal.style.opacity = "0";
-
-  setTimeout(() => {
-    modal.style.opacity = "1";
-  }, 10);
-}
-
-function cerrarModal() {
-  const modal = document.getElementById("modal");
-  modal.style.opacity = "0";
-
-  setTimeout(() => {
-    modal.style.display = "none";
-  }, 300);
-}
-
-// ===============================
-// INSCRIPCIÓN MEJORADA
-// ===============================
-function inscribirse() {
-  const nombre = document.getElementById("nombre").value;
-  const mensaje = document.getElementById("mensaje");
-
-  if (nombre === "") {
-    mensaje.innerText = "⚠️ Ingresa tu nombre";
-    mensaje.style.color = "red";
-    return;
-  }
-
-  mensaje.innerText = "🎉 Registro exitoso. Bienvenido al cambio.";
-  mensaje.style.color = "green";
-}
-
-// ===============================
 // SCROLL SUAVE
 // ===============================
 function scrollEventos() {
@@ -73,14 +30,14 @@ counters.forEach((counter) => {
   };
 
   // ACTIVAR SOLO CUANDO APARECE EN PANTALLA
-  const observer = new IntersectionObserver((entries) => {
+  const observerCounter = new IntersectionObserver((entries) => {
     if (entries[0].isIntersecting) {
       updateCounter();
-      observer.disconnect();
+      observerCounter.disconnect(); // ✅ correcto
     }
   });
 
-  observer.observe(counter);
+  observerCounter.observe(counter); // ✅ correcto
 });
 
 // ===============================
@@ -90,7 +47,7 @@ const elements = document.querySelectorAll(
   ".evento-card, .beneficio, .stat-card",
 );
 
-const observer = new IntersectionObserver((entries) => {
+const observerAnimacion = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.style.opacity = "1";
@@ -104,7 +61,7 @@ elements.forEach((el) => {
   el.style.transform = "translateY(40px)";
   el.style.transition = "all 0.6s ease";
 
-  observer.observe(el);
+  observerAnimacion.observe(el);
 });
 
 // ===============================
@@ -169,4 +126,68 @@ window.addEventListener("load", () => {
 
 function irFormulario() {
   window.location.href = "../html/formulario.html";
+}
+
+// ===============================
+// MODAL
+// ===============================
+function abrirModal(titulo, imgSrc) {
+  const modal = document.getElementById("modal");
+  const form = modal.querySelector("form");
+
+  document.getElementById("tituloEvento").innerText = titulo;
+
+  // 🔥 IMAGEN DINÁMICA
+  document.getElementById("modal-img").src = imgSrc;
+
+  // 🔥 LIMPIAR FORMULARIO
+  form.reset();
+  document.getElementById("mensaje-exito").innerText = "";
+
+  // 🔥 CONTENIDO DINÁMICO
+  if (titulo === "Comunicación inclusiva") {
+    document.getElementById("descripcionEvento").innerText =
+      "Aprenderás a comunicarte de forma inclusiva, evitando sesgos y promoviendo el respeto en entornos personales y laborales.";
+    document.getElementById("lugarEvento").innerText = "La Victoria";
+    document.getElementById("horaEvento").innerText = "10:00 AM";
+  }
+
+  if (titulo === "Historias que transforman") {
+    document.getElementById("descripcionEvento").innerText =
+      "Conoce historias reales que han generado impacto social y aprende cómo tú también puedes ser parte del cambio.";
+    document.getElementById("lugarEvento").innerText = "Híbrido";
+    document.getElementById("horaEvento").innerText = "4:00 PM";
+  }
+
+  if (titulo === "Construyamos juntos") {
+    document.getElementById("descripcionEvento").innerText =
+      "Participa en un espacio colaborativo donde se desarrollarán ideas para mejorar la inclusión en distintos contextos.";
+    document.getElementById("lugarEvento").innerText = "Virtual";
+    document.getElementById("horaEvento").innerText = "11:00 AM";
+  }
+
+  modal.style.display = "flex";
+}
+
+function cerrarModal() {
+  document.getElementById("modal").style.display = "none";
+}
+
+/* 🔥 cerrar al hacer clic fuera */
+function cerrarFuera(e) {
+  if (e.target.id === "modal") {
+    cerrarModal();
+  }
+}
+
+function enviarFormulario(e) {
+  e.preventDefault();
+
+  const mensaje = document.getElementById("mensaje-exito");
+
+  mensaje.innerText = "✅ Inscripción exitosa. ¡Te esperamos!";
+  mensaje.style.color = "green";
+
+  // opcional: limpiar form
+  e.target.reset();
 }
