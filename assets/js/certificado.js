@@ -1,10 +1,10 @@
 import { obtenerRanking } from "./ranking.js";
 
-const nombre = localStorage.getItem("nombre");
-const puntaje = localStorage.getItem("puntaje");
+const nombre = localStorage.getItem("nombre") || "Usuario";
+const puntaje = localStorage.getItem("puntaje") || "0";
 
 document.getElementById("nombre").textContent = nombre;
-
+document.getElementById("puntaje").textContent = puntaje;
 async function cargarRanking() {
   const datos = await obtenerRanking();
   const cont = document.getElementById("ranking");
@@ -37,7 +37,19 @@ document.getElementById("downloadBtn").onclick = () => {
   a.download = "certificado.txt";
   a.click();
 };
+document.getElementById("downloadBtn").addEventListener("click", () => {
+  const element = document.getElementById("certificado");
 
+  html2pdf()
+    .set({
+      margin: 10,
+      filename: `certificado-${nombre}.pdf`,
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
+    })
+    .from(element)
+    .save();
+});
 window.volver = () => {
   window.location.href = "../../index.html";
 };
