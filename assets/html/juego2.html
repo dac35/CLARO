@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Completa la frase</title>
+
+    <link rel="stylesheet" href="/assets/css/juego2.css" />
+    <link rel="stylesheet" href="/assets/css/header.css" />
+  </head>
+
+  <body>
+    <!-- HEADER (solo uno) -->
+    <header class="header">
+      <div class="container header-content">
+        <img src="../images/logo-claro-rojo.png" class="logo" />
+
+        <nav>
+          <a href="../../index.html">Inicio</a>
+          <a href="trivia.html">Trivia</a>
+          <a href="eventos.html" class="active">Eventos</a>
+          <a href="login.html" class="btn-nav">Comenzar</a>
+
+          <button onclick="cerrarSesion()" class="logout-btn">
+            Cerrar sesión
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- JUEGO -->
+    <div class="juego2-container">
+      <h1>Completa la frase</h1>
+
+      <h2>Puntaje: <span id="puntaje">0</span></h2>
+      <p id="feedback"></p>
+
+      <p class="frase">
+        La <span id="drop1" class="drop"></span> es importante porque promueve
+        la <span id="drop2" class="drop"></span> entre las personas.
+      </p>
+
+      <!-- OPCIONES -->
+      <div class="opciones">
+        <div class="drag" draggable="true">diversidad</div>
+        <div class="drag" draggable="true">equidad</div>
+        <div class="drag" draggable="true">inclusión</div>
+      </div>
+      <button id="btnNext" onclick="verificar()">Continuar</button>
+    </div>
+
+    <script src="/assets/js/juego2.js"></script>
+  </body>
+</html>

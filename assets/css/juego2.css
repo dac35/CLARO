@@ -1,0 +1,110 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-top: 90px;
+  background: #ffffff;
+  text-align: center;
+}
+
+/* contenedor */
+.juego2-container {
+  max-width: 900px;
+  margin: auto;
+  padding: 20px;
+}
+
+/* título */
+h1 {
+  color: #b30000;
+  margin-bottom: 10px;
+  animation: fadeIn 0.6s ease;
+}
+
+/* puntaje */
+#puntaje {
+  color: #b30000;
+  font-weight: bold;
+}
+
+/* frase */
+.frase {
+  font-size: 22px;
+  margin: 40px 0;
+  line-height: 1.8;
+}
+
+/* drops */
+.drop {
+  display: inline-block;
+  width: 140px;
+  height: 45px;
+  border: 2px dashed #b30000;
+  border-radius: 10px;
+  background: white;
+  transition: 0.3s;
+}
+
+/* opciones */
+.opciones {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.drag {
+  padding: 12px 20px;
+  background: #b30000;
+  color: white;
+  border-radius: 10px;
+  cursor: grab;
+  transition: 0.2s;
+}
+
+.drag:active {
+  transform: scale(1.05);
+}
+
+/* botones */
+button {
+  margin-top: 25px;
+  padding: 12px 25px;
+  border: none;
+  background: #b30000;
+  color: white;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background: #800000;
+}
+
+/* feedback bonito */
+#feedback {
+  font-size: 18px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* animación */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* correcto / error */
+.correcto {
+  color: green;
+}
+
+.error {
+  color: red;
+}

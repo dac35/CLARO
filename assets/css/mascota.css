@@ -1,0 +1,68 @@
+#companion {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  z-index: 9999;
+}
+
+.mascota {
+  font-size: 60px;
+  animation: float 2s infinite ease-in-out;
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s;
+}
+
+.mascota:hover {
+  transform: scale(1.2);
+}
+
+.mascota.robot {
+  filter: hue-rotate(200deg);
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* regalo */
+#giftOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9998;
+}
+
+.gift-box {
+  font-size: 60px;
+  text-align: center;
+  animation: pop 1s infinite alternate;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.mascota-grande {
+  font-size: 100px;
+  text-align: center;
+  color: white;
+}
