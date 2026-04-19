@@ -89,7 +89,7 @@ nav a.active {
   width: 100%;
   height: 100%;
   opacity: 0;
-  transition: 1s;
+  transition: 3s;
 }
 
 .slide img {
@@ -102,7 +102,6 @@ nav a.active {
   opacity: 1;
 }
 
-/* OVERLAY TEXTO */
 .overlay {
   position: relative;
   top: 25%;
@@ -113,8 +112,7 @@ nav a.active {
 }
 
 .overlay h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 48px;
+  font-size: 50px;
 }
 
 .overlay h1 span {
@@ -123,6 +121,7 @@ nav a.active {
 
 .overlay p {
   margin: 15px 0;
+  font-size: 22px;
   color: #444;
 }
 
@@ -133,6 +132,7 @@ nav a.active {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 /* DOTS */
@@ -162,7 +162,10 @@ nav a.active {
   padding: 60px;
   text-align: center;
 }
-
+.subtitle {
+  font-size: 25px;
+  text-align: center;
+}
 .grid {
   display: grid;
 
@@ -176,4 +179,181 @@ nav a.active {
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+.ranking-section {
+  padding: 60px 20px;
+  text-align: center;
+  background: #f7f7f7;
+}
+
+.ranking-section h1 {
+  font-size: 40px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-align: center;
+  color: rgb(215, 64, 64);
+}
+
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  height: 300px;
+  margin-top: 40px;
+}
+
+/* base de cada bloque */
+.podium-card {
+  width: 160px;
+  background: white;
+  border-radius: 16px 16px 0 0;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  position: relative;
+  animation: pop 0.3s ease forwards;
+  transform: translateY(30px);
+  opacity: 0;
+}
+
+/* animación entrada */
+@keyframes pop {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ESCALONES */
+.podium-1 {
+  height: 220px;
+  background: linear-gradient(180deg, gold, #ffd700);
+  order: 2;
+}
+
+.podium-2 {
+  height: 170px;
+  background: linear-gradient(180deg, silver, #c0c0c0);
+  order: 1;
+}
+
+.podium-3 {
+  height: 140px;
+  background: linear-gradient(180deg, #cd7f32, #b87333);
+  order: 3;
+}
+
+/* número grande */
+.podium-position {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+/* nombre */
+.podium-name {
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* puntaje */
+.podium-score {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.ranking-card {
+  width: 200px;
+  background: white;
+  border-radius: 16px;
+  padding: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.ranking-card:hover {
+  transform: translateY(-5px);
+}
+
+.ranking-card h3 {
+  margin: 10px 0;
+}
+
+.rank-medal {
+  font-size: 30px;
+}
+
+/* posiciones */
+.pos-0 {
+  border-top: 5px solid rgb(250, 225, 82);
+}
+.pos-1 {
+  border-top: 5px solid silver;
+}
+.pos-2 {
+  border-top: 5px solid #e29e5b;
+}
+
+/* ===== MODAL ===== */
+#modal-ranking {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+#modal-ranking.show {
+  display: flex;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.modal-content h2 {
+  margin: 10px 0;
+}
+
+.modal-medal {
+  font-size: 60px;
+}
+
+.close {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 22px;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.podium-4,
+.podium-5 {
+  height: 110px;
+  background: linear-gradient(180deg, #72c4e7, #bdbdbd);
+  opacity: 0.9;
+}
+
+/* posición visual */
+.podium-4 {
+  transform: scale(0.9);
+}
+
+.podium-5 {
+  transform: scale(0.85);
+}
+
+/* opcional: diferenciarlos un poco */
+.podium-4 .podium-position,
+.podium-5 .podium-position {
+  font-size: 28px;
 }

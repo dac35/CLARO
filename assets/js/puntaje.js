@@ -1,36 +1,20 @@
 import { db } from "./firebase.js";
-import { obtenerRanking } from "./ranking.js";
 import {
   collection,
   addDoc,
 } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-async function guardarPuntaje(nombre, puntaje) {
+async function guardarPuntaje(nombre, puntaje, correctas, tiempo) {
   await addDoc(collection(db, "puntajes"), {
     nombre,
     puntaje,
+    correctas,
+    tiempo,
     fecha: new Date(),
   });
 }
 
-async function mostrarRanking() {
-  const datos = await obtenerRanking();
-
-  const cont = document.getElementById("ranking");
-
-  cont.innerHTML = `
-    <h2>🏆 Ranking</h2>
-    ${datos
-      .map(
-        (p, i) => `
-      <p>#${i + 1} ${p.nombre} - ${p.puntaje}</p>
-    `,
-      )
-      .join("")}
-  `;
-}
-
-export async function mostrarResultado(puntaje) {
+export async function mostrarResultado(puntaje, correctas, tiempo) {
   let nombre = localStorage.getItem("nombre");
 
   if (!nombre) {
@@ -39,10 +23,12 @@ export async function mostrarResultado(puntaje) {
 
   if (!nombre) return;
 
-  localStorage.setItem("nombre", nombre);
+  await guardarPuntaje(nombre, puntaje, correctas, tiempo);
+
+  // guardar para mostrar luego
   localStorage.setItem("puntaje", puntaje);
+  localStorage.setItem("correctas", correctas);
+  localStorage.setItem("tiempo", tiempo);
 
-  await guardarPuntaje(nombre, puntaje);
-
-  window.location.href = "../html/certificado.html";
+  window.location.href = "../html/index.html"; // vuelve al inicio
 }
