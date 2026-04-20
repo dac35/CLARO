@@ -3,34 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="module" src="../js/quiz.js"></script>
+
     <link rel="stylesheet" href="/assets/css/styles.css" />
     <link rel="stylesheet" href="/assets/css/quiz.css" />
-    <link rel="stylesheet" href="/assets/css/eventos.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Claro</title>
-  </head>
-  <body>
-    <header class="header">
-      <div class="container header-content">
-        <img src="../images/logo-claro-rojo.png" class="logo" />
 
-        <nav>
-          <a href="../../index.html">Inicio</a>
-          <a href="trivia.html">Aprende</a>
-          <a href="eventos.html" class="active">Eventos</a>
-        </nav>
-      </div>
-    </header>
-    <!-- START SCREEN -->
+    <title>Quiz DEI</title>
+  </head>
+
+  <body>
+    <!-- START -->
     <div class="start-screen" id="startScreen">
       <div class="start-card">
         <h2>Antes de comenzar</h2>
-        <p>Ingresa tus datos para guardar tu puntaje</p>
 
         <input type="text" id="nameInput" placeholder="Tu nombre" />
         <input type="email" id="emailInput" placeholder="Tu correo" />
@@ -41,41 +25,31 @@
 
     <!-- QUIZ -->
     <div class="quiz-container" id="quizContainer" style="display: none">
-      <!-- SONIDOS -->
       <audio id="correctSound" src="../sounds/correct.mp3"></audio>
-      <audio id="wrongSound" src="/assets/sounds/wrong.mp3"></audio>
-      <audio id="tickSound" src="/assets/sounds/tick.mp3"></audio>
+      <audio id="wrongSound" src="../sounds/wrong.mp3"></audio>
 
-      <!-- BARRA -->
       <div class="timer-container">
         <div id="timeBar"></div>
       </div>
 
-      <!-- HEADER -->
       <div class="quiz-header">
-        <h1>Claro por la Inclusión</h1>
+        <h1>Quiz DEI</h1>
+
         <div class="stats">
           <span id="timer">⏱ 10</span>
           <span id="score">⭐ 0</span>
         </div>
       </div>
 
-      <!-- CARD -->
       <div class="card">
-        <p class="pregunta">
-          Pregunta <span id="current">1</span> / <span id="total">10</span>
-        </p>
+        <p>Pregunta <span id="current">1</span> / <span id="total">10</span></p>
 
         <h2 id="question"></h2>
 
-        <img id="image" class="image" />
-
         <div id="options" class="options"></div>
-
-        <p id="feedback" class="feedback"></p>
-
-        <button id="nextBtn" disabled>Continuar →</button>
       </div>
     </div>
+
+    <script type="module" src="../js/quiz.js"></script>
   </body>
 </html>

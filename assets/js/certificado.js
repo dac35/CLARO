@@ -1,55 +1,75 @@
-import { obtenerRanking } from "./ranking.js";
+window.addEventListener("DOMContentLoaded", () => {
+  const nombre = localStorage.getItem("nombre");
+  const puntaje = Number(localStorage.getItem("puntajeFinal"));
+  const tiempo = localStorage.getItem("tiempoFinal");
+  const pasoJuego2 = localStorage.getItem("pasoJuego2");
 
-const nombre = localStorage.getItem("nombre") || "Usuario";
-const puntaje = localStorage.getItem("puntaje") || "0";
+  if (!nombre) {
+    window.location.href = "trivia.html";
+    return;
+  }
 
-document.getElementById("nombre").textContent = nombre;
-document.getElementById("puntaje").textContent = puntaje;
-async function cargarRanking() {
-  const datos = await obtenerRanking();
-  const cont = document.getElementById("ranking");
+  if (puntaje < 80 && !pasoJuego2) {
+    window.location.href = "trivia.html";
+    return;
+  }
 
-  cont.innerHTML = `
-    <h3> Ranking</h3>
-    ${datos
-      .map((p, i) => `<p>#${i + 1} ${p.nombre} - ${p.puntaje} pts</p>`)
-      .join("")}
-  `;
-}
+  if (puntaje < 80) {
+    document.querySelector(".diploma-inner").innerHTML = `
+      <h2>😕 Aún no alcanzas el certificado</h2>
+      <p>Necesitas mínimo <strong>80 puntos</strong></p>
+      <p>Tu puntaje: <strong>${puntaje}</strong></p>
+      <button onclick="reintentar()">Intentar de nuevo</button>
+    `;
+    return;
+  }
 
-cargarRanking();
+  document.getElementById("certNombre").textContent = nombre;
+  document.getElementById("certPuntaje").textContent = puntaje;
+  document.getElementById("certTiempo").textContent = tiempo;
 
-document.getElementById("downloadBtn").onclick = () => {
-  const contenido = `
-    Certificado DEI
+  setTimeout(() => {
+    document.querySelector(".diploma-inner").classList.add("animar");
+  }, 100);
+});
 
-    Nombre: ${nombre}
-    Puntaje: ${puntaje} pts
+document.getElementById("downloadBtn").addEventListener("click", async () => {
+  const element = document.querySelector(".diploma-inner"); // 🔥 más preciso
+  const nombre = localStorage.getItem("nombre") || "usuario";
 
-    Felicitaciones por completar la trivia
-  `;
+  element.style.opacity = "1";
+  element.style.transform = "none";
 
-  const blob = new Blob([contenido], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "certificado.txt";
-  a.click();
-};
-document.getElementById("downloadBtn").addEventListener("click", () => {
-  const element = document.getElementById("certificado");
+  await new Promise((resolve) => setTimeout(resolve, 300)); // esperar render
 
   html2pdf()
     .set({
-      margin: 10,
       filename: `certificado-${nombre}.pdf`,
-      html2canvas: { scale: 2 },
-      jsPDF: { unit: "mm", format: "a4", orientation: "landscape" },
+      margin: 10,
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      },
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "landscape",
+      },
     })
     .from(element)
     .save();
 });
-window.volver = () => {
-  window.location.href = "../../index.html";
+
+window.reintentar = () => {
+  localStorage.removeItem("puntajeFinal");
+  localStorage.removeItem("tiempoFinal");
+  window.location.href = "trivia.html";
+};
+
+window.cerrarSesion = () => {
+  // 🔥 NO BORRAR TODO
+  localStorage.removeItem("nombre");
+  window.location.href = "trivia.html";
 };

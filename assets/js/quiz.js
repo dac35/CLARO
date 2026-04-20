@@ -1,3 +1,16 @@
+import { guardarResultado } from "./ranking.js";
+
+let current = 0;
+let score = 0;
+let correctCount = 0;
+let time = 10;
+let interval;
+let answered = false;
+let startTime = 0;
+let puntosPorPregunta = 10;
+let correctSound;
+let wrongSound;
+
 const questions = [
   {
     question: "¿Qué significa DEI?",
@@ -100,84 +113,79 @@ const questions = [
     answer: "Evaluar conocimientos sobre inclusión",
   },
 ];
-let current = 0;
-let score = 0;
-let time = 10;
-let interval;
-let answered = false;
 
 const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const timerEl = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
-const timeBar = document.getElementById("timeBar");
-const nextBtn = document.getElementById("nextBtn");
-
-const correctSound = document.getElementById("correctSound");
-const wrongSound = document.getElementById("wrongSound");
-const tickSound = document.getElementById("tickSound");
 const startBtn = document.getElementById("startBtn");
+
+const currentEl = document.getElementById("current");
+const totalEl = document.getElementById("total");
+
+window.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+  correctSound = document.getElementById("correctSound");
+  wrongSound = document.getElementById("wrongSound");
+
+  totalEl.textContent = questions.length;
+
+  const nombre = localStorage.getItem("nombre");
+  const terminado = localStorage.getItem("quizTerminado");
+  const puntaje = Number(localStorage.getItem("puntajeFinal"));
+
+  if (nombre) {
+    document.getElementById("startScreen").style.display = "none";
+    document.getElementById("quizContainer").style.display = "block";
+    startTime = Date.now();
+    loadQuestion();
+  }
+
+  if (terminado === "true" && puntaje >= 80) {
+    window.location.href = "certificado.html";
+  }
+
+  if (terminado === "true" && puntaje < 80) {
+    window.location.href = "juego2.html";
+  }
+});
 
 startBtn.addEventListener("click", () => {
   const name = document.getElementById("nameInput").value;
   const email = document.getElementById("emailInput").value;
 
-  if (!name || !email) {
-    alert("Completa todos los campos");
-    return;
-  }
+  if (!name || !email) return;
 
-  // guardar datos
   localStorage.setItem("nombre", name);
   localStorage.setItem("email", email);
 
-  // ocultar pantalla inicial
   document.getElementById("startScreen").style.display = "none";
+  document.body.classList.add("quiz-active");
 
-  // mostrar quiz
-  document.getElementById("quizContainer").style.display = "block";
-
-  // iniciar quiz
+  startTime = Date.now();
   loadQuestion();
 });
 
 function startTimer() {
   clearInterval(interval);
   time = 10;
-
   timerEl.textContent = `⏱ ${time}`;
-  timeBar.style.width = "100%";
 
   interval = setInterval(() => {
     time--;
-
     timerEl.textContent = `⏱ ${time}`;
-
-    // 🔊 tick
-    tickSound.currentTime = 0;
-    tickSound.play();
-
-    let percent = (time / 10) * 100;
-    timeBar.style.width = percent + "%";
-
-    if (time <= 5) {
-      timeBar.style.background = "#ff9800";
-    }
-    if (time <= 3) {
-      timeBar.style.background = "#e60000";
-    }
 
     if (time <= 0) {
       clearInterval(interval);
-      disableOptions();
-      nextBtn.disabled = false;
+      nextQuestion();
     }
   }, 1000);
 }
 
 function loadQuestion() {
   answered = false;
-  nextBtn.disabled = true;
+
+  currentEl.textContent = current + 1;
 
   const q = questions[current];
   questionEl.textContent = q.question;
@@ -186,66 +194,30 @@ function loadQuestion() {
   q.options.forEach((opt) => {
     const btn = document.createElement("button");
     btn.textContent = opt;
-
-    btn.onclick = () => checkAnswer(btn, opt);
+    btn.onclick = () => checkAnswer(opt);
     optionsEl.appendChild(btn);
   });
 
   startTimer();
 }
-startBtn.addEventListener("click", () => {
-  const name = document.getElementById("nameInput").value;
-  const email = document.getElementById("emailInput").value;
 
-  if (!name || !email) {
-    alert("Completa todos los campos");
-    return;
-  }
-
-  correctSound.play().then(() => correctSound.pause());
-  wrongSound.play().then(() => wrongSound.pause());
-  tickSound.play().then(() => tickSound.pause());
-
-  localStorage.setItem("nombre", name);
-  localStorage.setItem("email", email);
-
-  document.getElementById("startScreen").style.display = "none";
-  document.getElementById("quizContainer").style.display = "block";
-
-  loadQuestion();
-});
-function checkAnswer(button, selected) {
+function checkAnswer(selected) {
   if (answered) return;
 
   answered = true;
   clearInterval(interval);
 
-  const correct = questions[current].answer;
-
-  const buttons = optionsEl.querySelectorAll("button");
-
-  buttons.forEach((btn) => {
-    if (btn.textContent === correct) {
-      btn.classList.add("correct");
-    }
-  });
-
-  if (selected === correct) {
+  if (selected === questions[current].answer) {
     score += 10;
-    button.classList.add("correct");
+    correctCount++;
     correctSound.play();
   } else {
-    button.classList.add("wrong");
     wrongSound.play();
   }
 
   scoreEl.textContent = `⭐ ${score}`;
-  nextBtn.disabled = false;
-}
 
-function disableOptions() {
-  const buttons = optionsEl.querySelectorAll("button");
-  buttons.forEach((btn) => (btn.disabled = true));
+  setTimeout(nextQuestion, 800);
 }
 
 function nextQuestion() {
@@ -258,12 +230,28 @@ function nextQuestion() {
   }
 }
 
-function endGame() {
-  import("./puntaje.js").then(({ mostrarResultado }) => {
-    mostrarResultado(score);
+async function endGame() {
+  const totalTime = Math.floor((Date.now() - startTime) / 1000);
+
+  localStorage.setItem("quizTerminado", "true");
+  localStorage.setItem("puntajeFinal", score);
+  localStorage.setItem("tiempoFinal", totalTime);
+
+  const nombre = localStorage.getItem("nombre");
+  const email = localStorage.getItem("email");
+
+  await guardarResultado({
+    nombre,
+    email,
+    puntaje: score,
+    correctas: correctCount,
+    tiempo: totalTime,
+    fecha: new Date().toISOString(),
   });
+
+  if (score >= 80) {
+    window.location.href = "certificado.html";
+  } else {
+    window.location.href = "juego2.html";
+  }
 }
-
-nextBtn.addEventListener("click", nextQuestion);
-
-loadQuestion();

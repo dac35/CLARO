@@ -1,192 +1,113 @@
 body {
-  background: #f4f5f7;
+  background: linear-gradient(135deg, #f4f5f7, #e9ecf1);
   font-family: "Poppins", sans-serif;
-  padding-top: 80px;
 }
-
-.header {
-  background: white;
-  padding: 15px 40px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .main {
   display: flex;
   justify-content: center;
-  padding: 40px 20px;
-}
-
-.card {
-  width: 100%;
-  max-width: 800px;
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-}
-
-.card-header {
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.circle {
-  background: #e53935;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 50%;
-  font-size: 13px;
-}
-
-.content {
-  text-align: center;
-  margin-top: 20px;
-}
-
-h1 {
-  font-size: 32px;
-  margin-bottom: 10px;
-}
-
-.content p {
-  color: #555;
-  margin-bottom: 15px;
-}
-
-.main-img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 15px;
-  margin: 20px 0;
-}
-
-.diploma {
-  margin-top: 20px;
-  padding: 20px;
-  background: #fdfdfd;
-  border-radius: 15px;
+  min-height: 100vh;
+  padding: 40px 0;
 }
 
 .diploma-inner {
-  border: 8px solid #e53935;
-  padding: 40px;
-  border-radius: 10px;
-  text-align: center;
-  position: relative;
   background: white;
-}
-
-.top {
-  font-size: 14px;
-  letter-spacing: 2px;
-  color: #777;
-}
-
-.diploma h1 {
-  font-family: "Playfair Display", serif;
-  font-size: 32px;
-  margin: 10px 0;
-  color: #e53935;
-}
-
-.subtitle {
-  margin-top: 20px;
-  color: #555;
-}
-
-.diploma h2 {
-  font-size: 28px;
-  margin: 10px 0;
-}
-
-.text {
-  margin: 20px 0;
-  color: #666;
-  line-height: 1.5;
-}
-
-.score {
-  font-weight: bold;
-  margin-top: 10px;
-}
-
-.firma {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 40px;
-}
-
-.line {
-  width: 120px;
-  height: 1px;
-  background: black;
-  margin-bottom: 5px;
-}
-
-.sello {
-  position: absolute;
-  bottom: 20px;
-  right: 20px;
-  background: #e53935;
-  color: white;
-  padding: 15px;
-  border-radius: 50%;
-  font-size: 20px;
-  opacity: 0.8;
-}
-
-.info ul {
-  list-style: none;
-  text-align: left;
-  margin: 20px 0;
-}
-
-.info li {
-  margin-bottom: 8px;
-}
-
-.btn-download {
-  width: 100%;
-  padding: 14px;
-  background: #e53935;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.btn-download:hover {
-  background: #c62828;
-}
-
-.btn-explore {
-  margin-top: 15px;
-  background: none;
-  border: none;
-  color: #e53935;
-  cursor: pointer;
-}
-
-.footer {
+  padding: 50px;
+  width: 700px;
+  border-radius: 20px;
   text-align: center;
-  padding: 20px;
-  color: #777;
+  border: 6px solid #e53935;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+.diploma-inner::before {
+  content: "🏆";
+  font-size: 40px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.animar {
+  animation: aparecer 0.8s ease-out forwards;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.top {
+  font-size: 13px;
+  letter-spacing: 3px;
+  color: #888;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  color: #e53935;
+  font-size: 32px;
+}
+
+h2 {
+  margin: 20px 0;
+  font-size: 24px;
+}
+
+.acciones {
+  margin-top: 25px;
+}
+
+.btn {
+  padding: 10px 16px;
+  margin: 5px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background: #e53935;
+  color: white;
+}
+
+.btn-secondary {
+  background: black;
+  color: white;
+}
+
+.btn-outline {
+  border: 2px solid #e53935;
+  color: #e53935;
+  background: transparent;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: scale(0.85) translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animar {
+  animation: aparecer 0.8s ease-out forwards;
+}
+@media print {
+  .diploma-inner {
+    opacity: 1 !important;
+    transform: none !important;
+  }
 }

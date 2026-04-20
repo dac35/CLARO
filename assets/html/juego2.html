@@ -2,69 +2,56 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/trivia.css" />
-    <link rel="stylesheet" href="../css/footer.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Playfair+Display:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>Claro</title>
+    <title>Completa la frase</title>
+
+    <link rel="stylesheet" href="/assets/css/juego2.css" />
+    <link rel="stylesheet" href="/assets/css/header.css" />
   </head>
+
   <body>
-    <header>
+    <!-- HEADER (solo uno) -->
+    <header class="header">
       <div class="container header-content">
         <img src="../images/logo-claro-rojo.png" class="logo" />
 
         <nav>
           <a href="../../index.html">Inicio</a>
-          <a href="trivia.html">Aprende</a>
+          <a href="trivia.html">Trivia</a>
           <a href="eventos.html" class="active">Eventos</a>
+          <a href="login.html" class="btn-nav">Comenzar</a>
+
+          <button onclick="cerrarSesion()" class="logout-btn">
+            Cerrar sesión
+          </button>
         </nav>
       </div>
     </header>
-    <section class="trivia-intro">
-      <div class="trivia-content">
-        <div class="trivia-text">
-          <span class="badge">Trivia interactiva</span>
 
-          <h1>
-            Conociendo la <span>Diversidad, Equidad</span><br />
-            e Inclusión (DEI)
-          </h1>
+    <!-- JUEGO -->
+    <div class="juego2-container">
+      <h1>Completa la frase</h1>
 
-          <p class="intro">
-            La Diversidad, Equidad e Inclusión (DEI) son pilares clave para
-            construir entornos más justos, respetuosos y colaborativos.
-          </p>
+      <h2>Puntaje: <span id="puntaje">0</span></h2>
+      <p id="feedback"></p>
 
-          <p>
-            La <strong>diversidad</strong> reconoce y valora las diferencias
-            entre las personas, la <strong>equidad</strong> busca brindar
-            oportunidades justas según las necesidades de cada individuo, y la
-            <strong>inclusión</strong>
-            promueve espacios donde todos se sientan parte y escuchados.
-          </p>
+      <p class="frase">
+        La <span id="drop1" class="drop"></span> es importante porque promueve
+        la <span id="drop2" class="drop"></span> entre las personas.
+      </p>
 
-          <p>
-            En esta trivia interactiva podrás poner a prueba tus conocimientos y
-            descubrir cómo aplicar estos principios en situaciones reales del
-            entorno laboral.
-          </p>
-
-          <a href="quiz.html" class="btn">Iniciar trivia →</a>
-        </div>
-        <div class="trivia-img">
-          <img src="/assets/images/dei.png" alt="" />
-        </div>
+      <!-- OPCIONES -->
+      <div class="opciones">
+        <div class="drag" draggable="true">diversidad</div>
+        <div class="drag" draggable="true">equidad</div>
+        <div class="drag" draggable="true">inclusión</div>
       </div>
-    </section>
+      <button id="btnNext" onclick="verificar()">Continuar</button>
+    </div>
     <footer>
       <div class="footer-content">
         <div class="footer-left">
           <img
-            src="/assets/images/logo-claro-rojo.png"
+            src="./assets/images/logo-claro-rojo.png"
             alt="logo de Claro"
             class="logo-footer"
           />
@@ -117,5 +104,6 @@
         </div>
       </div>
     </footer>
+    <script src="/assets/js/juego2.js"></script>
   </body>
 </html>
