@@ -13,6 +13,10 @@
 
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/eventos.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
     <script defer src="../js/eventos.js"></script>
   </head>
@@ -235,30 +239,51 @@
           <div class="modal-form">
             <form onsubmit="enviarFormulario(event)">
               <h2>Inscríbete al evento</h2>
-              <p>Completa tus datos para asegurar tu participación</p>
 
-              <label>Nombres</label>
+              <label>Nombres completos</label>
               <input type="text" id="nombre" required />
 
-              <label>Correo electrónico</label>
-              <input type="email" id="correo" required />
+              <div class="form-group">
+                <label for="codigo">Código de empleado</label>
+                <input
+                  type="text"
+                  id="codigo"
+                  placeholder="Ej: C12345"
+                  required
+                />
+                <small id="error-codigo" class="error"></small>
+              </div>
 
-              <label>Teléfono</label>
-              <input type="telefono" id="telefono" required />
+              <div class="form-group checkbox-group">
+                <input type="checkbox" id="companero" />
+                <label for="companero">Puedes traer un compañero</label>
+              </div>
 
-              <label>¿Cómo te enteraste?</label>
-              <select>
-                <option>Redes sociales</option>
-                <option>Página web</option>
-                <option>Recomendación</option>
-                <option>Otro</option>
-              </select>
+              <div class="acciones">
+                <div class="compartir">
+                  <p>Compartir evento:</p>
 
-              <label>¿Qué te gustaría aprender?</label>
-              <textarea placeholder="Ej: Comunicación inclusiva"></textarea>
+                  <div class="iconos">
+                    <a id="whatsapp" target="_blank" class="icon whatsapp">
+                      <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a id="facebook" target="_blank" class="icon facebook">
+                      <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a id="linkedin" target="_blank" class="icon linkedin">
+                      <i class="fab fa-linkedin-in"></i>
+                    </a>
+                  </div>
+                </div>
 
-              <button type="submit">Confirmar inscripción</button>
+                <button id="agendaBtn" class="btn-agenda">
+                  📅 Agregar a la agenda
+                </button>
+              </div>
 
+              <button type="submit" class="btn-confirmar">
+                Confirmar inscripción
+              </button>
               <p id="mensaje-exito"></p>
             </form>
           </div>
@@ -270,7 +295,89 @@
     <section class="cta">
       <h2>¿Organizas un evento inclusivo?</h2>
       <p>Colabora con nosotros y amplifica el impacto de tu iniciativa.</p>
-      <button>Propone</button>
+      <button id="btnProponer">Proponer</button>
+
+      <div id="modalPropuesta" class="modal" onclick="cerrarFuera(event)">
+        <div class="modal-box">
+          <span class="close" onclick="cerrarModalPropuesta()">&times;</span>
+
+          <h2>Proponer evento</h2>
+
+          <form onsubmit="enviarPropuesta(event)" id="formPropuesta">
+            <div class="campo">
+              <label>Código de empleado</label>
+              <input
+                type="text"
+                id="codigoPropuesta"
+                placeholder="Ej: C12345"
+                required
+              />
+            </div>
+
+            <div class="campo">
+              <label>Nombre del evento</label>
+              <input
+                type="text"
+                id="tituloPropuesta"
+                placeholder="Ej: Taller de inclusión digital"
+                required
+              />
+            </div>
+
+            <div class="campo full">
+              <label>Descripción</label>
+              <textarea
+                id="descripcionPropuesta"
+                placeholder="Describe el propósito del evento..."
+                required
+              ></textarea>
+            </div>
+
+            <label>Fecha</label>
+            <input type="date" id="fechaPropuesta" required />
+
+            <label>Hora</label>
+            <input type="time" id="horaPropuesta" required />
+
+            <label>Modalidad</label>
+            <select id="modalidadPropuesta">
+              <option>Presencial</option>
+              <option>Virtual</option>
+              <option>Híbrido</option>
+            </select>
+
+            <div class="campo" id="campoLugar">
+              <label>Lugar</label>
+              <input
+                type="text"
+                id="lugarPropuesta"
+                placeholder="Ej: La Victoria, Lima"
+              />
+            </div>
+
+            <div class="campo" id="campoPublico">
+              <label>Público objetivo</label>
+              <input
+                type="text"
+                id="publicoPropuesta"
+                placeholder="Ej: Estudiantes, colaboradores..."
+              />
+            </div>
+
+            <div class="campo full" id="campoActividades">
+              <label>Actividades</label>
+              <textarea
+                id="actividadesPropuesta"
+                placeholder="Describe las actividades del evento..."
+              ></textarea>
+            </div>
+
+            <button type="submit">Enviar propuesta</button>
+          </form>
+
+          <p id="mensaje-propuesta"></p>
+        </div>
+      </div>
     </section>
 
     <!-- FOOTER -->
@@ -291,5 +398,32 @@
         </div>
       </div>
     </footer>
+
+    <script defer src="../js/eventos.js"></script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        addDoc,
+      } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyBarIe805-TVF4YUKSoCgS3QfPh-Ehz5gk",
+        authDomain: "claro-b4234.firebaseapp.com",
+        projectId: "claro-b4234",
+        storageBucket: "claro-b4234.firebasestorage.app",
+        messagingSenderId: "723168200360",
+        appId: "1:723168200360:web:91345a9e017966cc50a49d",
+      };
+
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+
+      // 🔥 HACERLO GLOBAL (clave para tu JS)
+      window.db = db;
+      window.addDoc = addDoc;
+      window.collection = collection;
+    </script>
   </body>
 </html>
