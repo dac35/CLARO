@@ -19,17 +19,16 @@
   <body>
     <header class="header">
       <div class="container header-content">
-        <img src="../images/logo-claro-rojo.png" class="logo" />
+        <img src="./assets/images/logo-claro-rojo.png" class="logo" />
 
-        <nav>
-          <a href="../../index.html">Inicio</a>
-          <a href="trivia.html">Trivia</a>
-          <a href="eventos.html" class="active">Eventos</a>
-          <a href="login.html" class="btn-nav">Comenzar</a>
-          <button onclick="cerrarSesion()" class="logout-btn">
-            Cerrar sesión
-          </button>
+        <nav class="nav">
+          <a href="../../index.html" class="nav-link active">Inicio</a>
+          <a href="./assets/html/trivia.html" class="nav-link">Aprende</a>
+          <a href="./assets/html/eventos.html" class="nav-link">Eventos</a>
         </nav>
+
+        <!-- Botón hamburguesa -->
+        <div class="menu-toggle" id="menuToggle">☰</div>
       </div>
     </header>
     <main class="main">

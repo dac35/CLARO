@@ -1,98 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: Arial, sans-serif;
+  font-family: "Segoe UI", Arial, sans-serif;
   margin: 0;
-  padding-top: 90px;
-  background: #ffffff;
+  padding-top: 170px;
+  background: #f5f6fa;
   text-align: center;
 }
 
-/* contenedor */
+/* CONTENEDOR PRINCIPAL */
 .juego2-container {
   max-width: 900px;
   margin: auto;
-  padding: 20px;
-}
-
-/* título */
-h1 {
-  color: #b30000;
-  margin-bottom: 10px;
+  padding: 30px 20px;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.6s ease;
 }
 
-/* puntaje */
+/* TÍTULO */
+h1 {
+  color: #e60000;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+/* PUNTAJE */
+h2 {
+  font-weight: 500;
+  color: #444;
+}
+
 #puntaje {
-  color: #b30000;
+  color: #e60000;
   font-weight: bold;
 }
 
-/* frase */
+/* FRASE */
 .frase {
   font-size: 22px;
   margin: 40px 0;
   line-height: 1.8;
+  color: #333;
 }
 
-/* drops */
+/* ZONAS DROP */
 .drop {
-  display: inline-block;
-  width: 140px;
-  height: 45px;
-  border: 2px dashed #b30000;
-  border-radius: 10px;
-  background: white;
-  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
+  height: 50px;
+  border: 2px dashed #e60000;
+  border-radius: 12px;
+  background: #fff;
+  margin: 5px;
+  transition: all 0.3s ease;
 }
 
-/* opciones */
+.drop.hovered {
+  background: #ffe5e5;
+  border-style: solid;
+}
+
+/* OPCIONES */
 .opciones {
   display: flex;
   justify-content: center;
   gap: 15px;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .drag {
-  padding: 12px 20px;
-  background: #b30000;
+  padding: 12px 22px;
+  background: linear-gradient(135deg, #ff0000, #e60000);
   color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: grab;
-  transition: 0.2s;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 5px 15px rgba(230, 0, 0, 0.25);
+}
+
+.drag:hover {
+  transform: translateY(-3px);
 }
 
 .drag:active {
   transform: scale(1.05);
+  cursor: grabbing;
 }
 
-/* botones */
+/* BOTÓN */
 button {
-  margin-top: 25px;
-  padding: 12px 25px;
+  margin-top: 30px;
+  padding: 14px 30px;
   border: none;
-  background: #b30000;
+  background: linear-gradient(135deg, #ff0000, #e60000);
   color: white;
-  border-radius: 10px;
+  border-radius: 12px;
   cursor: pointer;
-  transition: 0.2s;
+  font-size: 16px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(230, 0, 0, 0.3);
 }
 
 button:hover {
-  background: #800000;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(230, 0, 0, 0.4);
 }
 
-/* feedback bonito */
+/* FEEDBACK */
 #feedback {
   font-size: 18px;
-  margin-top: 10px;
-  font-weight: bold;
+  margin-top: 15px;
+  font-weight: 600;
 }
 
-/* animación */
+/* COLORES RESULTADO */
+.correcto {
+  color: #16a34a;
+}
+
+.error {
+  color: #dc2626;
+}
+
+/* ANIMACIÓN */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(15px);
   }
   to {
     opacity: 1;
@@ -100,11 +143,60 @@ button:hover {
   }
 }
 
-/* correcto / error */
-.correcto {
-  color: green;
+@media (max-width: 768px) {
+  body {
+    padding-top: 120px;
+  }
+
+  .juego2-container {
+    margin: 20px;
+    padding: 25px 15px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .frase {
+    font-size: 20px;
+  }
+
+  .drop {
+    width: 120px;
+    height: 45px;
+  }
 }
 
-.error {
-  color: red;
+/* CELULAR */
+@media (max-width: 480px) {
+  body {
+    padding-top: 130px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .frase {
+    font-size: 18px;
+  }
+
+  .opciones {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .drag {
+    width: 80%;
+    text-align: center;
+  }
+
+  .drop {
+    width: 100px;
+    height: 40px;
+  }
+
+  button {
+    width: 100%;
+  }
 }

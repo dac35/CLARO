@@ -34,13 +34,13 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 document.getElementById("downloadBtn").addEventListener("click", async () => {
-  const element = document.querySelector(".diploma-inner"); // 🔥 más preciso
+  const element = document.querySelector(".diploma-inner");
   const nombre = localStorage.getItem("nombre") || "usuario";
 
   element.style.opacity = "1";
   element.style.transform = "none";
 
-  await new Promise((resolve) => setTimeout(resolve, 300)); // esperar render
+  await new Promise((resolve) => setTimeout(resolve, 300));
 
   html2pdf()
     .set({
@@ -69,7 +69,6 @@ window.reintentar = () => {
 };
 
 window.cerrarSesion = () => {
-  // 🔥 NO BORRAR TODO
   localStorage.removeItem("nombre");
   window.location.href = "trivia.html";
 };

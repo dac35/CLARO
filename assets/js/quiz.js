@@ -7,7 +7,7 @@ let time = 10;
 let interval;
 let answered = false;
 let startTime = 0;
-let puntosPorPregunta = 10;
+
 let correctSound;
 let wrongSound;
 
@@ -119,61 +119,63 @@ const optionsEl = document.getElementById("options");
 const timerEl = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
 const startBtn = document.getElementById("startBtn");
-
+const nextBtn = document.getElementById("nextBtn");
 const currentEl = document.getElementById("current");
 const totalEl = document.getElementById("total");
 
 window.addEventListener("DOMContentLoaded", () => {
-  document.body.classList.add("loaded");
+  totalEl.textContent = questions.length;
+
   correctSound = document.getElementById("correctSound");
   wrongSound = document.getElementById("wrongSound");
 
-  totalEl.textContent = questions.length;
+  correctSound.volume = 0.4;
+  wrongSound.volume = 0.4;
 
   const nombre = localStorage.getItem("nombre");
-  const terminado = localStorage.getItem("quizTerminado");
-  const puntaje = Number(localStorage.getItem("puntajeFinal"));
 
-  if (nombre) {
-    document.getElementById("startScreen").style.display = "none";
-    document.getElementById("quizContainer").style.display = "block";
-    startTime = Date.now();
-    loadQuestion();
-  }
-
-  if (terminado === "true" && puntaje >= 80) {
-    window.location.href = "certificado.html";
-  }
-
-  if (terminado === "true" && puntaje < 80) {
-    window.location.href = "juego2.html";
-  }
+  if (nombre) startQuiz();
 });
 
 startBtn.addEventListener("click", () => {
-  const name = document.getElementById("nameInput").value;
-  const email = document.getElementById("emailInput").value;
+  const name = document.getElementById("nameInput").value.trim();
+  const email = document.getElementById("emailInput").value.trim();
 
-  if (!name || !email) return;
+  if (!name || !email) return alert("Completa los campos");
 
   localStorage.setItem("nombre", name);
   localStorage.setItem("email", email);
 
+  activarAudio();
+  startQuiz();
+});
+
+function activarAudio() {
+  correctSound.play().catch(() => {});
+  correctSound.pause();
+  correctSound.currentTime = 0;
+
+  wrongSound.play().catch(() => {});
+  wrongSound.pause();
+  wrongSound.currentTime = 0;
+}
+
+function startQuiz() {
   document.getElementById("startScreen").style.display = "none";
-  document.body.classList.add("quiz-active");
+  document.getElementById("quizContainer").style.display = "block";
 
   startTime = Date.now();
   loadQuestion();
-});
+}
 
 function startTimer() {
   clearInterval(interval);
   time = 10;
-  timerEl.textContent = `⏱ ${time}`;
 
   interval = setInterval(() => {
     time--;
     timerEl.textContent = `⏱ ${time}`;
+    document.getElementById("timeBar").style.width = `${time * 10}%`;
 
     if (time <= 0) {
       clearInterval(interval);
@@ -186,8 +188,8 @@ function loadQuestion() {
   answered = false;
 
   currentEl.textContent = current + 1;
-
   const q = questions[current];
+
   questionEl.textContent = q.question;
   optionsEl.innerHTML = "";
 
@@ -199,6 +201,13 @@ function loadQuestion() {
   });
 
   startTimer();
+  nextBtn.disabled = true;
+  nextBtn.style.opacity = "0.5";
+}
+
+function playSound(audio) {
+  audio.currentTime = 0;
+  audio.play().catch(() => {});
 }
 
 function checkAnswer(selected) {
@@ -207,27 +216,36 @@ function checkAnswer(selected) {
   answered = true;
   clearInterval(interval);
 
-  if (selected === questions[current].answer) {
+  const correct = questions[current].answer;
+  const buttons = optionsEl.querySelectorAll("button");
+
+  buttons.forEach((btn) => {
+    if (btn.textContent === correct) btn.classList.add("correct");
+
+    if (btn.textContent === selected && selected !== correct) {
+      btn.classList.add("wrong");
+    }
+
+    btn.disabled = true;
+  });
+
+  if (selected === correct) {
     score += 10;
     correctCount++;
-    correctSound.play();
+    playSound(correctSound);
   } else {
-    wrongSound.play();
+    playSound(wrongSound);
   }
 
   scoreEl.textContent = `⭐ ${score}`;
 
-  setTimeout(nextQuestion, 800);
+  nextBtn.disabled = false;
+  nextBtn.style.opacity = "1";
 }
-
 function nextQuestion() {
   current++;
-
-  if (current < questions.length) {
-    loadQuestion();
-  } else {
-    endGame();
-  }
+  if (current < questions.length) loadQuestion();
+  else endGame();
 }
 
 async function endGame() {
@@ -250,8 +268,11 @@ async function endGame() {
   });
 
   if (score >= 80) {
-    window.location.href = "certificado.html";
+    window.location.href = "./certificado.html";
   } else {
-    window.location.href = "juego2.html";
+    window.location.href = "./juego2.html";
   }
 }
+nextBtn.addEventListener("click", () => {
+  nextQuestion();
+});

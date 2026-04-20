@@ -11,6 +11,20 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="container header-content">
+        <img src="./assets/images/logo-claro-rojo.png" class="logo" />
+
+        <nav class="nav">
+          <a href="../../index.html" class="nav-link active">Inicio</a>
+          <a href="./assets/html/trivia.html" class="nav-link">Aprende</a>
+          <a href="./assets/html/eventos.html" class="nav-link">Eventos</a>
+        </nav>
+
+        <!-- Botón hamburguesa -->
+        <div class="menu-toggle" id="menuToggle">☰</div>
+      </div>
+    </header>
     <!-- START -->
     <div class="start-screen" id="startScreen">
       <div class="start-card">
@@ -47,6 +61,7 @@
         <h2 id="question"></h2>
 
         <div id="options" class="options"></div>
+        <button id="nextBtn" disabled>Continuar →</button>
       </div>
     </div>
 
