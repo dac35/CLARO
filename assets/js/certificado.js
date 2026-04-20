@@ -4,13 +4,12 @@ window.addEventListener("DOMContentLoaded", () => {
   const tiempo = localStorage.getItem("tiempoFinal");
   const pasoJuego2 = localStorage.getItem("pasoJuego2");
 
-  if (puntaje < 80 && !pasoJuego2) {
+  if (!nombre) {
     window.location.href = "trivia.html";
     return;
   }
-  console.log("Puntaje:", puntaje);
 
-  if (!nombre) {
+  if (puntaje < 80 && !pasoJuego2) {
     window.location.href = "trivia.html";
     return;
   }
@@ -20,7 +19,6 @@ window.addEventListener("DOMContentLoaded", () => {
       <h2>😕 Aún no alcanzas el certificado</h2>
       <p>Necesitas mínimo <strong>80 puntos</strong></p>
       <p>Tu puntaje: <strong>${puntaje}</strong></p>
-
       <button onclick="reintentar()">Intentar de nuevo</button>
     `;
     return;
@@ -30,34 +28,48 @@ window.addEventListener("DOMContentLoaded", () => {
   document.getElementById("certPuntaje").textContent = puntaje;
   document.getElementById("certTiempo").textContent = tiempo;
 
-  const cert = document.querySelector(".diploma-inner");
   setTimeout(() => {
-    cert.classList.add("animar");
+    document.querySelector(".diploma-inner").classList.add("animar");
   }, 100);
 });
 
-document.getElementById("downloadBtn").addEventListener("click", () => {
-  const element = document.getElementById("certificado");
-  const nombre = localStorage.getItem("nombre");
+document.getElementById("downloadBtn").addEventListener("click", async () => {
+  const element = document.querySelector(".diploma-inner"); // 🔥 más preciso
+  const nombre = localStorage.getItem("nombre") || "usuario";
+
+  element.style.opacity = "1";
+  element.style.transform = "none";
+
+  await new Promise((resolve) => setTimeout(resolve, 300)); // esperar render
 
   html2pdf()
     .set({
       filename: `certificado-${nombre}.pdf`,
-      html2canvas: { scale: 2 },
+      margin: 10,
+      image: { type: "jpeg", quality: 1 },
+      html2canvas: {
+        scale: 3,
+        useCORS: true,
+        backgroundColor: "#ffffff",
+      },
+      jsPDF: {
+        unit: "mm",
+        format: "a4",
+        orientation: "landscape",
+      },
     })
     .from(element)
     .save();
 });
 
 window.reintentar = () => {
-  localStorage.removeItem("quizTerminado");
   localStorage.removeItem("puntajeFinal");
   localStorage.removeItem("tiempoFinal");
-
   window.location.href = "trivia.html";
 };
 
 window.cerrarSesion = () => {
-  localStorage.clear();
+  // 🔥 NO BORRAR TODO
+  localStorage.removeItem("nombre");
   window.location.href = "trivia.html";
 };
