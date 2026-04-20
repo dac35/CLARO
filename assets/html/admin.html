@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Admin - Claro Inclusión</title>
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/perfiles.css" />
+
+    <script type="module" src="../js/admin.js"></script>
+  </head>
+
+  <body>
+    <div class="perfil-layout">
+      <!-- SIDEBAR -->
+      <aside class="perfil-sidebar">
+        <img src="../images/usuario.jpeg" />
+
+        <h2>Administrador</h2>
+        <p>Panel de control</p>
+
+        <button class="sidebar-btn btn-volver" onclick="volver()">
+          ← Volver
+        </button>
+
+        <button class="sidebar-btn btn-logout" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </aside>
+
+      <!-- CONTENIDO -->
+      <main class="perfil-content">
+        <div class="seccion">
+          <h3>📅 Inscripciones</h3>
+          <div id="listaInscripciones" class="card-list"></div>
+        </div>
+
+        <div class="seccion">
+          <h3>💡 Propuestas</h3>
+          <div id="listaPropuestas" class="card-list"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

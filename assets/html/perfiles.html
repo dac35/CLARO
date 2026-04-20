@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Perfiles - Claro Inclusión</title>
+
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/perfiles.css" />
+
+    <script defer src="../js/perfiles.js"></script>
+  </head>
+
+  <body>
+    <div class="perfil-layout">
+      <!-- SIDEBAR -->
+      <aside class="perfil-sidebar">
+        <img src="../images/usuario.jpeg" />
+
+        <h2 id="nombreUsuario">Usuario</h2>
+        <p id="codigoUsuario">Código</p>
+
+        <button class="sidebar-btn btn-volver" onclick="volver()">
+          ← Volver
+        </button>
+
+        <button class="sidebar-btn btn-logout" onclick="cerrarSesion()">
+          Cerrar sesión
+        </button>
+      </aside>
+
+      <!-- CONTENIDO -->
+      <main class="perfil-content">
+        <!-- EVENTOS -->
+        <div class="seccion">
+          <h3>📅 Eventos inscritos</h3>
+          <div id="listaEventos" class="card-list"></div>
+        </div>
+
+        <!-- PROPUESTAS -->
+        <div class="seccion">
+          <h3>💡 Mis propuestas</h3>
+          <div id="listaPropuestas" class="card-list"></div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
