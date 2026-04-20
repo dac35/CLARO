@@ -39,7 +39,35 @@ body {
 .quiz-header h1 {
   font-size: 18px;
 }
+.decor {
+  position: fixed;
+  width: 120px;
+  opacity: 0.9;
+  z-index: 0;
+  animation: float 4s ease-in-out infinite;
+}
 
+.trophy {
+  top: 120px;
+  left: 20px;
+}
+
+.side {
+  bottom: 80px;
+  right: 20px;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 .stats span {
   margin-left: 10px;
 }
@@ -55,7 +83,7 @@ body {
 /* OPCIONES */
 .options {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 👈 2 columnas */
+  grid-template-columns: repeat(2, 1fr);
   gap: 15px;
 }
 .options button {
@@ -67,7 +95,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
   text-align: center;
-  min-height: 100px; /* 👈 altura tipo card */
+  min-height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,7 +145,7 @@ body {
   margin: 10px 0;
 }
 .start-screen {
-  position: fixed;
+  display: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -150,4 +178,22 @@ body {
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+#quizContainer {
+  display: none;
+}
+
+body.loaded #quizContainer {
+  display: block;
+}
+#quizContainer {
+  display: none;
+}
+
+body.quiz-active #quizContainer {
+  display: block;
+}
+
+body.quiz-active #startScreen {
+  display: none;
 }

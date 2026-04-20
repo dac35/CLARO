@@ -8,6 +8,8 @@ let interval;
 let answered = false;
 let startTime = 0;
 let puntosPorPregunta = 10;
+let correctSound;
+let wrongSound;
 
 const questions = [
   {
@@ -116,24 +118,35 @@ const questionEl = document.getElementById("question");
 const optionsEl = document.getElementById("options");
 const timerEl = document.getElementById("timer");
 const scoreEl = document.getElementById("score");
-const timeBar = document.getElementById("timeBar");
-
 const startBtn = document.getElementById("startBtn");
 
+const currentEl = document.getElementById("current");
+const totalEl = document.getElementById("total");
+
 window.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("loaded");
+  correctSound = document.getElementById("correctSound");
+  wrongSound = document.getElementById("wrongSound");
+
+  totalEl.textContent = questions.length;
+
   const nombre = localStorage.getItem("nombre");
   const terminado = localStorage.getItem("quizTerminado");
-
-  if (nombre && terminado === "true") {
-    window.location.href = "certificado.html";
-    return;
-  }
+  const puntaje = Number(localStorage.getItem("puntajeFinal"));
 
   if (nombre) {
     document.getElementById("startScreen").style.display = "none";
     document.getElementById("quizContainer").style.display = "block";
     startTime = Date.now();
     loadQuestion();
+  }
+
+  if (terminado === "true" && puntaje >= 80) {
+    window.location.href = "certificado.html";
+  }
+
+  if (terminado === "true" && puntaje < 80) {
+    window.location.href = "juego2.html";
   }
 });
 
@@ -147,7 +160,7 @@ startBtn.addEventListener("click", () => {
   localStorage.setItem("email", email);
 
   document.getElementById("startScreen").style.display = "none";
-  document.getElementById("quizContainer").style.display = "block";
+  document.body.classList.add("quiz-active");
 
   startTime = Date.now();
   loadQuestion();
@@ -157,12 +170,10 @@ function startTimer() {
   clearInterval(interval);
   time = 10;
   timerEl.textContent = `⏱ ${time}`;
-  timeBar.style.width = "100%";
 
   interval = setInterval(() => {
     time--;
     timerEl.textContent = `⏱ ${time}`;
-    timeBar.style.width = (time / 10) * 100 + "%";
 
     if (time <= 0) {
       clearInterval(interval);
@@ -173,6 +184,8 @@ function startTimer() {
 
 function loadQuestion() {
   answered = false;
+
+  currentEl.textContent = current + 1;
 
   const q = questions[current];
   questionEl.textContent = q.question;
@@ -195,15 +208,16 @@ function checkAnswer(selected) {
   clearInterval(interval);
 
   if (selected === questions[current].answer) {
-    score += puntosPorPregunta;
+    score += 10;
     correctCount++;
+    correctSound.play();
+  } else {
+    wrongSound.play();
   }
 
   scoreEl.textContent = `⭐ ${score}`;
 
-  setTimeout(() => {
-    nextQuestion();
-  }, 1000);
+  setTimeout(nextQuestion, 800);
 }
 
 function nextQuestion() {
@@ -219,13 +233,12 @@ function nextQuestion() {
 async function endGame() {
   const totalTime = Math.floor((Date.now() - startTime) / 1000);
 
-  const nombre = localStorage.getItem("nombre");
-  const email = localStorage.getItem("email");
-
   localStorage.setItem("quizTerminado", "true");
   localStorage.setItem("puntajeFinal", score);
-  window.location.href = "certificado.html";
   localStorage.setItem("tiempoFinal", totalTime);
+
+  const nombre = localStorage.getItem("nombre");
+  const email = localStorage.getItem("email");
 
   await guardarResultado({
     nombre,
@@ -238,14 +251,7 @@ async function endGame() {
 
   if (score >= 80) {
     window.location.href = "certificado.html";
-  } else if (score >= 50) {
-    window.location.href = "juego2.html";
   } else {
-    alert("Vas a repetir el quiz");
-    current = 0;
-    score = 0;
-    correctCount = 0;
-    startTime = Date.now();
-    loadQuestion();
+    window.location.href = "juego2.html";
   }
 }
