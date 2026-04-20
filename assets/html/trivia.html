@@ -13,20 +13,24 @@
     <title>Claro</title>
   </head>
   <body>
-    <header class="header">
+      <header class="header">
       <div class="container header-content">
         <img src="./assets/images/logo-claro-rojo.png" class="logo" />
 
         <nav class="nav">
           <a href="../../index.html" class="nav-link active">Inicio</a>
-          <a href="/assets/html/trivia.html" class="nav-link">Aprende</a>
+          <a href="./assets/html/trivia.html" class="nav-link">Aprende</a>
           <a href="./assets/html/eventos.html" class="nav-link">Eventos</a>
         </nav>
 
         <!-- Botón hamburguesa -->
-        <div class="menu-toggle" id="menuToggle">☰</div>
+        <input type="checkbox" id="menu-toggle" />
+        <label for="menu-toggle" class="menu-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
       </div>
-    </header>
     <section class="trivia-intro">
       <div class="trivia-content">
         <div class="trivia-text">
@@ -54,10 +58,10 @@
             entorno laboral.
           </p>
 
-          <a href="quiz.html" class="btn">Iniciar trivia →</a>
+          <a href="./quiz.html" class="btn">Iniciar trivia →</a>
         </div>
         <div class="trivia-img">
-          <img src="/assets/images/dei.png" alt="" />
+          <img src="./assets/images/dei.png" alt="" />
         </div>
       </div>
     </section>
@@ -65,7 +69,7 @@
       <div class="footer-content">
         <div class="footer-left">
           <img
-            src="/assets/images/logo-claro-rojo.png"
+            src="./assets/images/logo-claro-rojo.png"
             alt="logo de Claro"
             class="logo-footer"
           />
