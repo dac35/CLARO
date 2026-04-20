@@ -38,7 +38,6 @@ const frases = [
   },
 ];
 
-// 🔥 DRAG
 function activarDrags() {
   document.querySelectorAll(".drag").forEach((drag) => {
     drag.addEventListener("dragstart", () => {
@@ -47,7 +46,6 @@ function activarDrags() {
   });
 }
 
-// 🔥 DROP
 function activarDrops() {
   document.querySelectorAll(".drop").forEach((drop) => {
     drop.addEventListener("dragover", (e) => {
@@ -60,7 +58,6 @@ function activarDrops() {
   });
 }
 
-// 🔥 CARGAR FRASE
 function cargarFrase() {
   const f = frases[fraseActual];
 
@@ -82,7 +79,6 @@ function cargarFrase() {
   actualizarBoton();
 }
 
-// 🔥 BOTÓN DINÁMICO
 function actualizarBoton() {
   const btn = document.getElementById("btnNext");
 
@@ -93,7 +89,6 @@ function actualizarBoton() {
   }
 }
 
-// 🔥 VERIFICAR (ARREGLADO SIN BUG DE PUNTOS)
 function verificar() {
   const f = frases[fraseActual];
 
@@ -129,7 +124,6 @@ function verificar() {
   }, 900);
 }
 
-// 🔥 FINAL
 function terminarJuego() {
   let puntajeFinal = Number(localStorage.getItem("puntajeFinal") || 0);
   puntajeFinal += puntajeJuego2;
@@ -145,7 +139,6 @@ function terminarJuego() {
   }
 }
 
-// 🔥 INIT
 window.addEventListener("DOMContentLoaded", () => {
   cargarFrase();
 });
