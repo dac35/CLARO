@@ -1,4 +1,3 @@
-window.db;
 window.addDoc;
 
 // ===============================
@@ -210,10 +209,6 @@ function abrirModal(titulo, imgSrc) {
 
 function cerrarModal() {
   document.getElementById("modal").style.display = "none";
-}
-
-function cerrarFuera(e) {
-  if (e.target.id === "modal") cerrarModal();
 }
 
 // ===============================
@@ -520,14 +515,13 @@ async function enviarPropuesta(e) {
     actividades: form.actividadesPropuesta,
   };
 
-  // 🔴 VALIDACIÓN
+  //  VALIDACIÓN
   const error = validarCampos(datos);
 
   if (error) {
     mensaje.innerText = error + " ❌";
     mensaje.style.color = "red";
 
-    // 🔥 enfocar campo error
     if (!validarCodigo(datos.codigo.value)) datos.codigo.focus();
     else if (datos.titulo.value.length < 5) datos.titulo.focus();
     else if (datos.descripcion.value.length < 10) datos.descripcion.focus();
@@ -535,7 +529,7 @@ async function enviarPropuesta(e) {
     return;
   }
 
-  // 🔥 FORMATO FECHA
+  // FORMATO FECHA
   const start =
     datos.fecha.value.replace(/-/g, "") +
     "T" +
@@ -556,19 +550,16 @@ async function enviarPropuesta(e) {
     estado: "pendiente",
   };
 
-  // 💾 GUARDAR
   const propuestas = obtenerPropuestas();
   propuestas.push(propuesta);
   guardarPropuestas(propuestas);
 
-  // ✅ FEEDBACK VISUAL
   btn.innerText = "Enviado ✅";
   btn.style.background = "green";
 
   mensaje.innerText = "Propuesta enviada correctamente 🎉";
   mensaje.style.color = "green";
 
-  // 🔄 RESET BOTÓN
   setTimeout(() => {
     btn.innerText = "Enviar propuesta";
     btn.style.background = "#e60000";
